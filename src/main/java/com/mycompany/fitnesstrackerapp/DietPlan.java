@@ -11,14 +11,22 @@ import java.util.Scanner;
  * @author paarth
  */
 public class DietPlan {
-    private int age;
-    private boolean isMale;
-    private float heightFeet;
-    private float heightInches;
-    private float weightPounds;
-    private int activityLevelChoice;
-    private int weightGoal;
     
+    private UserProfile userProfile; // An instance of UserProfile
+
+    public DietPlan(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
+    
+    // Access user attributes using the UserProfile instance and its getter methods
+        int age = userProfile.getAge();
+        boolean isMale = userProfile.isMale();
+        float heightFeet = userProfile.getHeightFeet();
+        float heightInches = userProfile.getHeightInches();
+        float weightPounds = userProfile.getWeightPounds();
+        int activityLevelChoice = userProfile.getActivityLevelChoice();
+        int weightGoal = userProfile.getWeightGoal();
+        
     public void collectUserInput() {
         Scanner scanner = new Scanner(System.in);
 

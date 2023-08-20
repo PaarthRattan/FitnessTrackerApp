@@ -10,13 +10,23 @@ package com.mycompany.fitnesstrackerapp;
  * @author VihoHuang
  */
 public class ActivityLog {
+    private UserProfile userProfile; // An instance of UserProfile
+
+    public ActivityLog(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
     
-    
-    
-    
-    
-        
+    // Access user attributes using the UserProfile instance and its getter methods
+        int age = userProfile.getAge();
+        boolean isMale = userProfile.isMale();
+        float heightFeet = userProfile.getHeightFeet();
+        float heightInches = userProfile.getHeightInches();
+        float weightPounds = userProfile.getWeightPounds();
+        int activityLevelChoice = userProfile.getActivityLevelChoice();
+        int weightGoal = userProfile.getWeightGoal();
+
     public void calculateProteinIntake() {
+
         float activityMultiplier = getActivityMultiplier(activityLevelChoice);
         float bmr;
 
