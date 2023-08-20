@@ -11,18 +11,24 @@ import java.util.Scanner;
  * @author paarth
  */
 public class DietPlan {
-    public void calculateProteinIntake() {
+    private int age;
+    private boolean isMale;
+    private float heightFeet;
+    private float heightInches;
+    private float weightPounds;
+    private int activityLevelChoice;
+    private int weightGoal;
+
+    public void collectUserInput() {
         Scanner scanner = new Scanner(System.in);
 
         try {
             System.out.print("Enter your age (years): ");
-            int age = scanner.nextInt();
+            age = scanner.nextInt();
 
-            int sexChoice;
-            boolean isMale = false;
             do {
                 System.out.print("Enter your sex (1 for Male, 2 for Female): ");
-                sexChoice = scanner.nextInt();
+                int sexChoice = scanner.nextInt();
                 if (sexChoice == 1) {
                     isMale = true;
                 } else if (sexChoice == 2) {
@@ -30,20 +36,18 @@ public class DietPlan {
                 } else {
                     System.out.println("Invalid sex choice. Please enter 1 for Male or 2 for Female.");
                 }
-            } while (sexChoice != 1 && sexChoice != 2);
+            } while (!isMale && isMale);
 
-            System.out.print("Enter your height (Feet, maximum 8): ");
-            float heightFeet;
             do {
+                System.out.print("Enter your height (Feet, maximum 8): ");
                 heightFeet = scanner.nextFloat();
                 if (heightFeet < 0 || heightFeet > 8) {
                     System.out.println("Invalid height. Please enter a value between 0 and 8 feet.");
                 }
             } while (heightFeet < 0 || heightFeet > 8);
 
-            System.out.print("Enter your height (Inches, maximum 11): ");
-            float heightInches;
             do {
+                System.out.print("Enter your height (Inches, maximum 11): ");
                 heightInches = scanner.nextFloat();
                 if (heightInches < 0 || heightInches >= 12) {
                     System.out.println("Invalid height. Please enter a value between 0 and 11 inches.");
@@ -51,57 +55,60 @@ public class DietPlan {
             } while (heightInches < 0 || heightInches >= 12);
 
             System.out.print("Enter your weight (Pounds): ");
-            float weightPounds = scanner.nextFloat();
+            weightPounds = scanner.nextFloat();
 
-            System.out.print("Enter your current activity level (1 to 5):\n" +
-                    "1. Sedentary\n" +
-                    "2. Lightly active\n" +
-                    "3. Moderately active\n" +
-                    "4. Very active\n" +
-                    "5. Extra active\n" +
-                    "Select an option: ");
-            int activityLevelChoice = scanner.nextInt();
+            do {
+                System.out.print("Enter your current activity level (1 to 5):\n" +
+                        "1. Sedentary\n" +
+                        "2. Lightly active\n" +
+                        "3. Moderately active\n" +
+                        "4. Very active\n" +
+                        "5. Extra active\n" +
+                        "Select an option: ");
+                activityLevelChoice = scanner.nextInt();
+                if (activityLevelChoice < 1 || activityLevelChoice > 5) {
+                    System.out.println("Invalid activity level choice. Please select a number between 1 and 5.");
+                }
+            } while (activityLevelChoice < 1 || activityLevelChoice > 5);
 
-            if (activityLevelChoice < 1 || activityLevelChoice > 5) {
-                System.out.println("Invalid activity level choice. Please select a number between 1 and 5.");
-                return;
-            }
+            do {
+                System.out.print("Enter your weight goal (1 for Maintain, 2 for Lose, 3 for Gain): ");
+                weightGoal = scanner.nextInt();
+                if (weightGoal < 1 || weightGoal > 3) {
+                    System.out.println("Invalid weight goal choice. Please select 1, 2, or 3.");
+                }
+            } while (weightGoal < 1 || weightGoal > 3);
 
-            float activityMultiplier = getActivityMultiplier(activityLevelChoice);
-
-            System.out.print("Enter your weight goal (1 for Maintain, 2 for Lose, 3 for Gain): ");
-            int weightGoal = scanner.nextInt();
-
-            if (weightGoal < 1 || weightGoal > 3) {
-                System.out.println("Invalid weight goal choice. Please select 1, 2, or 3.");
-                return;
-            }
-
-            float bmr;
-            if (isMale) {
-                bmr = 10 * (weightPounds * 0.453592f) + 6.25f * ((heightFeet * 30.48f) + (heightInches * 2.54f)) - 5 * age + 5;
-            } else {
-                bmr = 10 * (weightPounds * 0.453592f) + 6.25f * ((heightFeet * 30.48f) + (heightInches * 2.54f)) - 5 * age - 161;
-            }
-
-            float calorieIntake;
-
-            if (weightGoal == 2) { // Lose Weight
-                calorieIntake = bmr * activityMultiplier * 0.8f;
-            } else if (weightGoal == 3) { // Gain Weight
-                calorieIntake = bmr * activityMultiplier + 500;
-            } else { // Maintain Current Weight
-                calorieIntake = bmr * activityMultiplier;
-            }
-
-            float proteinIntake = (calorieIntake * 0.4f) / 4; // 40% of calories from protein
-
-            System.out.println("Recommended daily protein intake: " + String.format("%.2f", proteinIntake) + "g");
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter valid numerical values.");
         } finally {
             scanner.close();
         }
+    }
+
+    public void calculateProteinIntake() {
+        float activityMultiplier = getActivityMultiplier(activityLevelChoice);
+        float bmr;
+
+        if (isMale) {
+            bmr = 10 * (weightPounds * 0.453592f) + 6.25f * ((heightFeet * 30.48f) + (heightInches * 2.54f)) - 5 * age + 5;
+        } else {
+            bmr = 10 * (weightPounds * 0.453592f) + 6.25f * ((heightFeet * 30.48f) + (heightInches * 2.54f)) - 5 * age - 161;
+        }
+
+        float calorieIntake;
+
+        if (weightGoal == 2) { // Lose Weight
+            calorieIntake = bmr * activityMultiplier * 0.8f;
+        } else if (weightGoal == 3) { // Gain Weight
+            calorieIntake = bmr * activityMultiplier + 500;
+        } else { // Maintain Current Weight
+            calorieIntake = bmr * activityMultiplier;
+        }
+
+        float proteinIntake = (calorieIntake * 0.4f) / 4; // 40% of calories from protein
+
+        System.out.println("Recommended daily protein intake: " + String.format("%.2f", proteinIntake) + "g");
     }
 
     private static float getActivityMultiplier(int activityLevelChoice) {
@@ -118,6 +125,7 @@ public class DietPlan {
                 return 1.9f; // Extra active
             default:
                 return 1.0f; // Default to sedentary
+                //version trois
         }
     }
 }
