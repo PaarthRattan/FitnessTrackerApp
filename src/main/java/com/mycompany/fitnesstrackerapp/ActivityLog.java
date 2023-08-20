@@ -11,6 +11,16 @@ package com.mycompany.fitnesstrackerapp;
  */
 public class ActivityLog {
     
-    
+    public ActivityLog() {
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
     
 }
