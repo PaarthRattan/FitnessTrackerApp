@@ -125,7 +125,6 @@ public class DietPlan {
                 return 1.9f; // Extra active
             default:
                 return 1.0f; // Default to sedentary
-                //version trois
         }
     }
 }
