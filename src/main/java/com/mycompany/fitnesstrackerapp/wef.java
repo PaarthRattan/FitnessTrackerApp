@@ -10,4 +10,6 @@ package com.mycompany.fitnesstrackerapp;
  */
 public class wef {
     
+    
+    System.out.println("golf");
 }
