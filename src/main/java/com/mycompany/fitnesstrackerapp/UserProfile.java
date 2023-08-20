@@ -13,13 +13,13 @@ import java.util.Scanner;
  */
 public class UserProfile {
     
-    protected int age;
-    protected boolean isMale;
-    protected float heightFeet;
-    protected float heightInches;
-    protected float weightPounds;
-    protected int activityLevelChoice;
-    protected int weightGoal;
+    private int age;
+    private boolean isMale;
+    private float heightFeet;
+    private float heightInches;
+    private float weightPounds;
+    private int activityLevelChoice;
+    private int weightGoal;
     
     // Getter method for age
     public int getAge() {

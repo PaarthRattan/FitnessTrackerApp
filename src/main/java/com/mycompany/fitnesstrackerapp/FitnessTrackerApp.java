@@ -6,7 +6,7 @@ package com.mycompany.fitnesstrackerapp;
 
 /**
  *
- * @author paart
+ * @author paarth
  */
 public class FitnessTrackerApp {
 
