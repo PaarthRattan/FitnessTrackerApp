@@ -18,7 +18,7 @@ public class DietPlan {
     private float weightPounds;
     private int activityLevelChoice;
     private int weightGoal;
-
+    
     public void collectUserInput() {
         Scanner scanner = new Scanner(System.in);
 
