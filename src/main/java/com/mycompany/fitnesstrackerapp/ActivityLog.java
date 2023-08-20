@@ -4,10 +4,23 @@
  */
 package com.mycompany.fitnesstrackerapp;
 
+
 /**
  *
  * @author VihoHuang
  */
 public class ActivityLog {
+    
+    public ActivityLog() {
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
     
 }

@@ -4,178 +4,160 @@
  */
 package com.mycompany.fitnesstrackerapp;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  *
  * @author admin
  */
 public class UserProfile {
     
-    private int age;    
-    private String name;
-    private int weight; // subject to change incase we want different data type
-    private int height; // subject to change incase we want different data type
-    private String exerciseLevel;
-    private String username;
-    private String password;
-//  private String userGoals; Depends on if we want to add this to our code or not
-//
-//    /**
-//     * Get the value of userGoals
-//     *
-//     * @return the value of userGoals
-//     */
-//    public String getUserGoals() {
-//        return userGoals;
-//    }
-//
-//    /**
-//     * Set the value of userGoals
-//     *
-//     * @param userGoals new value of userGoals
-//     */
-//    public void setUserGoals(String userGoals) {
-//        this.userGoals = userGoals;
-//    }
-
-
-    /**
-     * Get the value of password
-     *
-     * @return the value of password
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * Set the value of password
-     *
-     * @param password new value of password
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
-    /**
-     * Get the value of username
-     *
-     * @return the value of username
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * Set the value of username
-     *
-     * @param username new value of username
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-
-    /**
-     * Get the value of exerciseLevel
-     *
-     * @return the value of exerciseLevel
-     */
-    public String getExerciseLevel() {
-        return exerciseLevel;
-    }
-
-    /**
-     * Set the value of exerciseLevel
-     *
-     * @param exerciseLevel new value of exerciseLevel
-     */
-    public void setExerciseLevel(String exerciseLevel) {
-        this.exerciseLevel = exerciseLevel;
-    }
-
-
-    /**
-     * Get the value of height
-     *
-     * @return the value of height
-     */
-    public int getHeight() {
-        return height;
-    }
-
-    /**
-     * Set the value of height
-     *
-     * @param height new value of height
-     */
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-
-    /**
-     * Get the value of weight
-     *
-     * @return the value of weight
-     */
-    public int getWeight() {
-        return weight;
-    }
-
-    /**
-     * Set the value of weight
-     *
-     * @param weight new value of weight
-     */
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-
-    /**
-     * Get the value of name
-     *
-     * @return the value of name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Set the value of name
-     *
-     * @param name new value of name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    /**
-     * Get the value of age
-     *
-     * @return the value of age
-     */
+    private int age;
+    private boolean isMale;
+    private float heightFeet;
+    private float heightInches;
+    private float weightPounds;
+    private int activityLevelChoice;
+    private int weightGoal;
+    
+    // Getter method for age
     public int getAge() {
         return age;
     }
 
-    /**
-     * Set the value of age
-     *
-     * @param age new value of age
-     */
+    // Setter method for age
     public void setAge(int age) {
         this.age = age;
     }
 
-    /*
-    * Change based on what we wish to display in the text file. 
-    */
-    @Override
-    public String toString() {
-        return "UserProfile{" + "age=" + age + ", name=" + name + ", weight=" + weight + ", height=" + height + ", exerciseLevel=" + exerciseLevel + ", username=" + username + ", password=" + password + '}';
+    // Getter method for isMale
+    public boolean isMale() {
+        return isMale;
+    }
+
+    // Setter method for isMale
+    public void setMale(boolean isMale) {
+        this.isMale = isMale;
+    }
+
+    // Getter method for heightFeet
+    public float getHeightFeet() {
+        return heightFeet;
+    }
+
+    // Setter method for heightFeet
+    public void setHeightFeet(float heightFeet) {
+        this.heightFeet = heightFeet;
+    }
+
+    // Getter method for heightInches
+    public float getHeightInches() {
+        return heightInches;
+    }
+
+    // Setter method for heightInches
+    public void setHeightInches(float heightInches) {
+        this.heightInches = heightInches;
+    }
+
+    // Getter method for weightPounds
+    public float getWeightPounds() {
+        return weightPounds;
+    }
+
+    // Setter method for weightPounds
+    public void setWeightPounds(float weightPounds) {
+        this.weightPounds = weightPounds;
+    }
+
+    // Getter method for activityLevelChoice
+    public int getActivityLevelChoice() {
+        return activityLevelChoice;
+    }
+
+    // Setter method for activityLevelChoice
+    public void setActivityLevelChoice(int activityLevelChoice) {
+        this.activityLevelChoice = activityLevelChoice;
+    }
+
+    // Getter method for weightGoal
+    public int getWeightGoal() {
+        return weightGoal;
+    }
+
+    // Setter method for weightGoal
+    public void setWeightGoal(int weightGoal) {
+        this.weightGoal = weightGoal;
+    }
+    
+    public void collectUserInput() {
+        Scanner scanner = new Scanner(System.in);
+        
+        
+
+        try {
+            System.out.print("Enter your age (years): ");
+            age = scanner.nextInt();
+
+            do {
+                System.out.print("Enter your sex (1 for Male, 2 for Female): ");
+                int sexChoice = scanner.nextInt();
+                if (sexChoice == 1) {
+                    isMale = true;
+                } else if (sexChoice == 2) {
+                    isMale = false;
+                } else {
+                    System.out.println("Invalid sex choice. Please enter 1 for Male or 2 for Female.");
+                }
+            } while (!isMale && isMale);
+
+            do {
+                System.out.print("Enter your height (Feet, maximum 8): ");
+                heightFeet = scanner.nextFloat();
+                if (heightFeet < 0 || heightFeet > 8) {
+                    System.out.println("Invalid height. Please enter a value between 0 and 8 feet.");
+                }
+            } while (heightFeet < 0 || heightFeet > 8);
+
+            do {
+                System.out.print("Enter your height (Inches, maximum 11): ");
+                heightInches = scanner.nextFloat();
+                if (heightInches < 0 || heightInches >= 12) {
+                    System.out.println("Invalid height. Please enter a value between 0 and 11 inches.");
+                }
+            } while (heightInches < 0 || heightInches >= 12);
+
+            System.out.print("Enter your weight (Pounds): ");
+            weightPounds = scanner.nextFloat();
+
+            do {
+                System.out.print("Enter your current activity level (1 to 5):\n" +
+                        "1. Sedentary\n" +
+                        "2. Lightly active\n" +
+                        "3. Moderately active\n" +
+                        "4. Very active\n" +
+                        "5. Extra active\n" +
+                        "Select an option: ");
+                activityLevelChoice = scanner.nextInt();
+                if (activityLevelChoice < 1 || activityLevelChoice > 5) {
+                    System.out.println("Invalid activity level choice. Please select a number between 1 and 5.");
+                }
+            } while (activityLevelChoice < 1 || activityLevelChoice > 5);
+
+            do {
+                System.out.print("Enter your weight goal (1 for Maintain, 2 for Lose, 3 for Gain): ");
+                weightGoal = scanner.nextInt();
+                if (weightGoal < 1 || weightGoal > 3) {
+                    System.out.println("Invalid weight goal choice. Please select 1, 2, or 3.");
+                }
+            } while (weightGoal < 1 || weightGoal > 3);
+
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter valid numerical values.");
+        } finally {
+            scanner.close();
+        }
     }
     
     
