@@ -20,6 +20,8 @@ public class UserProfile {
     private float weightPounds;
     private int activityLevelChoice;
     private int weightGoal;
+    private String username;
+    private String password;
     
     // Getter method for age
     public int getAge() {
@@ -89,6 +91,26 @@ public class UserProfile {
     // Setter method for weightGoal
     public void setWeightGoal(int weightGoal) {
         this.weightGoal = weightGoal;
+    }
+    
+    // Getter method for Username
+    public String getUsername() {
+        return username;
+    }
+
+    // Setter method for age
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
+    // Getter method for age
+    public String getPassword() {
+        return password;
+    }
+
+    // Setter method for age
+    public void setPassword(String password) {
+        this.password = password;
     }
     
     public void collectUserInput() {
