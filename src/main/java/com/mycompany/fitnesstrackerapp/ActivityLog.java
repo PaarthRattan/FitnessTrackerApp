@@ -7,7 +7,7 @@ package com.mycompany.fitnesstrackerapp;
 
 /**
  *
- * @author VihoHuang
+ * @author Viho
  */
 public class ActivityLog {
     private UserProfile userProfile; // An instance of UserProfile
