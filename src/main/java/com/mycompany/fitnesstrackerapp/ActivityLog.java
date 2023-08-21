@@ -13,7 +13,7 @@ public class ActivityLog {
     private UserProfile userProfile; // An instance of UserProfile
 
     public ActivityLog(UserProfile userProfile) {
-        this.userProfile = userProfile;
+        this.userProfile = userProfile; 
     }
     
     // Access user attributes using the UserProfile instance and its getter methods
@@ -25,7 +25,7 @@ public class ActivityLog {
         int activityLevelChoice = userProfile.getActivityLevelChoice();
         int weightGoal = userProfile.getWeightGoal();
 
-    public void calculateProteinIntake() {
+    public void calculateProteinIntake() { //creating a method to calculate the protein 
 
         float activityMultiplier = getActivityMultiplier(activityLevelChoice);
         float bmr;
