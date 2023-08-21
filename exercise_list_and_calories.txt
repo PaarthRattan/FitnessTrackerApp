@@ -1,0 +1,45 @@
+stationary cycling, light, 230
+stationary cycling, moderate, 550
+stationary cycling, vigorous, 790
+cycling, light, 460
+cycling, moderate, 600
+cycling, vigorous, 750
+rowing machine, light, 250
+rowing machine, moderate, 520
+rowing machine, vigorous, 540
+aerobics, light, 375
+aerobics, moderate, 550
+aerobics, vigorous, 660
+walking, light, 220
+walking, moderate, 240
+walking, vigorous, 360
+canoeing, light, 220
+canoeing, moderate, 440
+canoeing, vigorous, 920
+swimming, light, 520
+swimming, moderate, 620
+swimming, vigorous, 750
+running, light, 670
+running, moderate, 850
+running, vigorous, 1200
+ice skating, light, 410
+ice skating, moderate, 530
+ice skating, vigorous, 680
+jumping rope, light, 580
+jumping rope, moderate, 750
+jumping rope, vigorous, 910
+pilates, light, 240
+pilates, moderate, 390
+pilates, vigorous, 600
+circuit training, light, 520
+circuit training, moderate, 680
+circuit training, vigorous, 840
+soccer, light, 480
+soccer, moderate, 590
+soccer, vigorous, 680
+basketball, light, 410
+basketball, moderate, 550
+basketball, vigorous, 680
+weight lifting, light, 180
+weight lifting, moderate, 310
+weight lifting, vigorous, 500
