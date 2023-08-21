@@ -20,45 +20,16 @@ public class ActivityLog {
         this.userProfile = userProfile;
     }
     
-    
-    
-    public static void displayActivities() {
-        
-        System.out.println("Here are a list of activies: ");
-        
-        try {
-            // Create a FileReader, which is a type of Reader
-            FileReader fileReader = new FileReader("example.txt");
 
-            // Wrap the FileReader with a BufferedReader
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-            // Now you can use the BufferedReader to read data
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                System.out.println(line);
-            }
-
-            // Remember to close the BufferedReader when done
-            bufferedReader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-        
-        
-        
-    }
-    
-    
     // Access user attributes using the UserProfile instance and its getter methods
-    int age = userProfile.getAge();
-    boolean isMale = userProfile.isMale();
-    float heightFeet = userProfile.getHeightFeet();
-    float heightInches = userProfile.getHeightInches();
-    float weightPounds = userProfile.getWeightPounds();
-    int activityLevelChoice = userProfile.getActivityLevelChoice();
-    int weightGoal = userProfile.getWeightGoal();
+        int age = userProfile.getAge();
+        boolean isMale = userProfile.isMale();
+        float heightFeet = userProfile.getHeightFeet();
+        float heightInches = userProfile.getHeightInches();
+        float weightPounds = userProfile.getWeightPounds();
+        int activityLevelChoice = userProfile.getActivityLevelChoice();
+        int weightGoal = userProfile.getWeightGoal();
+
 
     public void calculateProteinIntake() {
 
