@@ -4,6 +4,10 @@
  */
 package com.mycompany.fitnesstrackerapp;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 /**
  *
@@ -16,6 +20,7 @@ public class ActivityLog {
         this.userProfile = userProfile; 
     }
     
+
     // Access user attributes using the UserProfile instance and its getter methods
         int age = userProfile.getAge();
         boolean isMale = userProfile.isMale();
@@ -25,7 +30,8 @@ public class ActivityLog {
         int activityLevelChoice = userProfile.getActivityLevelChoice();
         int weightGoal = userProfile.getWeightGoal();
 
-    public void calculateProteinIntake() { //creating a method to calculate the protein 
+
+    public void calculateProteinIntake() {
 
         float activityMultiplier = getActivityMultiplier(activityLevelChoice);
         float bmr;
