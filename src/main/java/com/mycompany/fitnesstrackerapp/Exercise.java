@@ -9,8 +9,8 @@ package com.mycompany.fitnesstrackerapp;
  * @author sande
  */
 public class Exercise {
-    
-    String name;
+    //instance variables
+    String name; 
     int caloriesBurned;
     String focus;
     String gymRequired;
@@ -19,6 +19,6 @@ public class Exercise {
         this.name = name;
         this.caloriesBurned = caloriesBurned;
         this.focus = focus;
-        this.gymRequired = gymRequired;
+        this.gymRequired = gymRequired; 
     }
 }
