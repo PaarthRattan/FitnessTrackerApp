@@ -21,7 +21,7 @@ public class ExerciseProgram {
         Scanner scanner = new Scanner(System.in); //invokes scanner method 
         String continueFlag = "Y"; //creates a variable 
 
-        while (continueFlag.equalsIgnoreCase("Y")) {//if the user enters Y
+        while (continueFlag.equalsIgnoreCase("Y")) {//while the user enters Y ...
             System.out.println("Available options:"); //The user is prompted
             System.out.println("1. View exercises by category");  //The user is prompted
             System.out.println("2. View exercises that require a gym");  //The user is prompted
@@ -59,7 +59,7 @@ public class ExerciseProgram {
                 } else {
                     System.out.println("No exercises found that require a gym.");
                 }
-            } else if ("3".equals(option)) {
+            } else if ("3".equals(option)) { //if the user enters 3 as an option, the following code is ran
                 displayExercisesNotRequiringGym(exercises);
             } else if ("4".equals(option)) {
                 System.out.print("Enter minimum calories: ");
