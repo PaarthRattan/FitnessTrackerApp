@@ -1,0 +1,26 @@
+﻿* Push-Ups,250,Strength,No
+* Jogging/Running,700,Cardio,No
+* Squats,275,Strength,No
+* Lunges,250,Strength,No
+* Burpees,500,Both,No
+* Jumping Jacks,350,Cardio,No
+* Plank,200,Strength,No
+* Bicycle Crunches,275,Strength,No
+* Mountain Climbers,350,Cardio,No
+* Skipping Rope,500,Cardio,No
+* Walking,250,Cardio,No
+* Tricep Dips (using a chair or bench),250,Strength,No
+* Treadmill Running,600,Cardio,Yes
+* Stationary Cycling,500,Cardio,Yes
+* Elliptical Training,400,Cardio,Yes
+* Rowing Machine,500,Cardio,Yes
+* Weightlifting (using barbells or dumbbells),300,Strength,Yes
+* Cable Machine Exercises,350,Strength,Yes
+* Leg Press Machine,300,Strength,Yes
+* Lat Pulldown Machine,250,Strength,Yes
+* Chest Press Machine,250,Strength,Yes
+* Leg Extension Machine,200,Strength,Yes
+* Seated Row Machine,250,Strength,Yes
+* Hamstring Curl Machine,200,Strength,Yes
+* Smith Machine Exercises,300,Strength,Yes
+* *
