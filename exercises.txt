@@ -1,26 +1,44 @@
-* Push-Ups,250,Strength,No
-* Jogging/Running,700,Cardio,No
-* Squats,275,Strength,No
-* Lunges,250,Strength,No
-* Burpees,500,Both,No
-* Jumping Jacks,350,Cardio,No
-* Plank,200,Strength,No
-* Bicycle Crunches,275,Strength,No
-* Mountain Climbers,350,Cardio,No
-* Skipping Rope,500,Cardio,No
-* Walking,250,Cardio,No
-* Tricep Dips (using a chair or bench),250,Strength,No
-* Treadmill Running,600,Cardio,Yes
-* Stationary Cycling,500,Cardio,Yes
-* Elliptical Training,400,Cardio,Yes
-* Rowing Machine,500,Cardio,Yes
-* Weightlifting (using barbells or dumbbells),300,Strength,Yes
-* Cable Machine Exercises,350,Strength,Yes
-* Leg Press Machine,300,Strength,Yes
-* Lat Pulldown Machine,250,Strength,Yes
-* Chest Press Machine,250,Strength,Yes
-* Leg Extension Machine,200,Strength,Yes
-* Seated Row Machine,250,Strength,Yes
-* Hamstring Curl Machine,200,Strength,Yes
-* Smith Machine Exercises,300,Strength,Yes
-* *
+Push-Ups,250,Strength,No
+Jogging/Running,700,Cardio,No
+Squats,275,Strength,No
+Lunges,250,Strength,No
+Burpees,500,Both,No
+Jumping Jacks,350,Cardio,No
+Plank,200,Strength,No
+Bicycle Crunches,275,Strength,No
+Mountain Climbers,350,Cardio,No
+Skipping Rope,500,Cardio,No
+Walking,250,Cardio,No
+Tricep Dips (using a chair or bench),250,Strength,No
+Treadmill Running,600,Cardio,Yes
+Stationary Cycling,500,Cardio,Yes
+Elliptical Training,400,Cardio,Yes
+Rowing Machine,500,Cardio,Yes
+Weightlifting (using barbells or dumbbells),300,Strength,Yes
+Cable Machine Exercises,350,Strength,Yes
+Leg Press Machine,300,Strength,Yes
+Lat Pulldown Machine,250,Strength,Yes
+Chest Press Machine,250,Strength,Yes
+Leg Extension Machine,200,Strength,Yes
+Seated Row Machine,250,Strength,Yes
+Hamstring Curl Machine,200,Strength,Yes
+Smith Machine Exercises,300,Strength,Yes
+Swimming, 500, Cardio, Yes
+Cycling (Outdoor), 450, Cardio, Yes
+Stair Climbing, 350, Cardio, No
+Zumba, 400, Cardio, No
+Kickboxing, 550, Cardio, No
+CrossFit Workout, 600, Both, Yes
+Jump Rope (Intense), 400, Cardio, No
+Hiking, 300, Cardio, No
+Deadlifts, 350, Strength, Yes
+Bench Press, 300, Strength, Yes
+Overhead Press, 250, Strength, Yes
+Romanian Deadlifts, 300, Strength, Yes
+Kettlebell Swings, 300, Strength, Yes
+Pull-Ups/Chin-Ups, 250, Strength, Yes
+Push Press, 250, Strength, Yes
+Leg Raises, 200, Strength, No
+Russian Twists, 200, Strength, No
+Farmer's Walk, 300, Strength, Yes
+**
