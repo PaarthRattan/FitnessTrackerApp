@@ -11,21 +11,35 @@ package com.mycompany.fitnesstrackerapp;
 public class User {
     private String username;
     private String password;
-    private boolean isMale;
+    private String sex;
     private double height;
     private float weightPounds;
-    private int activityLevelChoice;
+    private String activityLevelChoice;
+    private int age;
     private String name;
 
-    // Constructor
-    public User(String username, String password, boolean isMale, double height,
-                float weightPounds, int activityLevelChoice, String name) {
+    // Constructor with activity level, for calculating macros
+    public User(String username, String password, String sex, double height,
+                float weightPounds, String activityLevelChoice, int age, String name) {
         this.username = username;
         this.password = password;
-        this.isMale = isMale;
+        this.sex = sex;
         this.height = height;
         this.weightPounds = weightPounds;
         this.activityLevelChoice = activityLevelChoice;
+        this.age = age;
+        this.name = name;
+    }
+    
+    // Overloaded constructor without activity level, when making account
+    public User(String username, String password, String sex, double height,
+                float weightPounds, int age, String name) {
+        this.username = username;
+        this.password = password;
+        this.sex = sex;
+        this.height = height;
+        this.weightPounds = weightPounds;
+        this.age = age;
         this.name = name;
     }
 
@@ -38,8 +52,8 @@ public class User {
         return password;
     }
 
-    public boolean getIsMale() {
-        return isMale;
+    public String getSex() {
+        return sex;
     }
 
     public double getHeight() {
@@ -50,8 +64,12 @@ public class User {
         return weightPounds;
     }
 
-    public int getActivityLevelChoice() {
+    public String getActivityLevelChoice() {
         return activityLevelChoice;
+    }
+    
+    public int getAge(){
+        return age;
     }
 
     public String getName() {
@@ -67,8 +85,8 @@ public class User {
         this.password = password;
     }
     
-    public void setMale(boolean male) {
-        isMale = male;
+    public void setSex (String sex) {
+        this.sex = sex;
     }
     
     public void setHeight(double height) {
@@ -79,12 +97,15 @@ public class User {
         this.weightPounds = weightPounds;
     }
     
-    public void setActivityLevelChoice(int activityLevelChoice) {
+    public void setActivityLevelChoice(String activityLevelChoice) {
         this.activityLevelChoice = activityLevelChoice;
+    }
+    
+    public void setAge(int age){
+        this.age = age;
     }
     
     public void setName(String name) {
         this.name = name;
     }
-    
 }

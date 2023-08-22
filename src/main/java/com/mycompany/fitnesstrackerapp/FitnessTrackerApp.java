@@ -18,8 +18,7 @@ Scanner scanner = new Scanner(System.in);
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        UserProfile userProfile = new UserProfile(); // Create an instance of UserProfile
-        userProfile.collectAndSaveUserInput();
+       
        
         
     }
