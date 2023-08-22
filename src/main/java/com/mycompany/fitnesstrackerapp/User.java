@@ -38,7 +38,7 @@ public class User {
         return password;
     }
 
-    public boolean isMale() {
+    public boolean getIsMale() {
         return isMale;
     }
 
@@ -58,8 +58,33 @@ public class User {
         return name;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+  
     // Setter method for password
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public void setMale(boolean male) {
+        isMale = male;
+    }
+    
+    public void setHeight(double height) {
+        this.height = height;
+    }
+    
+    public void setWeightPounds(float weightPounds) {
+        this.weightPounds = weightPounds;
+    }
+    
+    public void setActivityLevelChoice(int activityLevelChoice) {
+        this.activityLevelChoice = activityLevelChoice;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
 }
