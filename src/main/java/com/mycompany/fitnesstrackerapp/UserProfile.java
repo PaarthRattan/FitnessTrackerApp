@@ -9,9 +9,10 @@ public class UserProfile {
    
     private static ArrayList < User > users = new ArrayList < > ();
     private static final String FILE_PATH = "userInfo";
-    Scanner scanner = new Scanner(System.in);
+    
     
     public void collectAndSaveUserInput() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Thank you for deciding to use our Fitness Tracker App. Let's get your account created.");
 
         String username = collectValidUsername();
@@ -35,6 +36,7 @@ public class UserProfile {
     }
     
     private String collectValidUsername() {
+        Scanner scanner = new Scanner(System.in);
         String username;
         do {
             System.out.print("Enter your username (8 to 20 characters): ");
@@ -47,6 +49,7 @@ public class UserProfile {
     }
 
     private String collectValidPassword() {
+        Scanner scanner = new Scanner(System.in);
         String password;
         do {
             System.out.print("Enter your password (at least 8 characters): ");
@@ -59,11 +62,13 @@ public class UserProfile {
     }
 
     private String collectValidName() {
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your name: ");
         return scanner.nextLine();
     }
 
     private int collectValidAge() {
+        Scanner scanner = new Scanner(System.in);
         int age;
         do {
             System.out.print("Enter your age (16 to 80 years): ");
@@ -81,6 +86,7 @@ public class UserProfile {
     }
 
     private boolean collectValidSex() {
+        Scanner scanner = new Scanner(System.in);
         boolean isMale;
         do {
             System.out.print("Enter your sex (1 for Male, 2 for Female): ");
@@ -104,6 +110,7 @@ public class UserProfile {
     }
 
     private float collectValidHeightFeet() {
+        Scanner scanner = new Scanner(System.in);
         float heightFeet;
         do {
             System.out.print("Enter your height (Feet, maximum 8): ");
@@ -121,6 +128,7 @@ public class UserProfile {
     }
 
     private float collectValidHeightInches() {
+        Scanner scanner = new Scanner(System.in);
         float heightInches;
         do {
             System.out.print("Enter your height (Inches, maximum 11): ");
@@ -138,6 +146,7 @@ public class UserProfile {
     }
 
     private float collectValidWeight() {
+        Scanner scanner = new Scanner(System.in);
         float weightPounds;
         do {
             System.out.print("Enter your weight (Pounds): ");
@@ -155,6 +164,7 @@ public class UserProfile {
     }
 
     private int collectValidActivityLevel() {
+        Scanner scanner = new Scanner(System.in);
         int activityLevelChoice;
         do {
             System.out.print("Enter your current activity level (1 to 5):\n" +
