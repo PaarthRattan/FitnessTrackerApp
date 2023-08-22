@@ -1,187 +1,244 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.fitnesstrackerapp;
 
+import java.io.*;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-/**
- *
- * @author admin
- */
 public class UserProfile {
    
-    private int age;
-    private boolean isMale;
-    private float heightFeet;
-    private float heightInches;
-    private float weightPounds;
-    private int activityLevelChoice;
-    private int weightGoal;
-    private String username;
-    private String password;
+    private static ArrayList < User > users = new ArrayList < > ();
+    private static final String FILE_PATH = "userInfo";
+    Scanner scanner = new Scanner(System.in);
+    
+    public void collectAndSaveUserInput() {
+        System.out.println("Thank you for deciding to use our Fitness Tracker App. Let's get your account created.");
 
-    // Getter method for age
-    public int getAge() {
-        return age;
+        String username = collectValidUsername();
+        String password = collectValidPassword();
+        String name = collectValidName();
+        int age = collectValidAge();
+        boolean isMale = collectValidSex();
+        float heightFeet = collectValidHeightFeet();
+        float heightInches = collectValidHeightInches();
+        float weightPounds = collectValidWeight();
+        int activityLevelChoice = collectValidActivityLevel();
+
+        // Create a User object and add it to the list of users
+        User newUser = new User(username, password, isMale, heightFeet * 12 + heightInches, weightPounds, activityLevelChoice, name);
+        users.add(newUser);
+
+        // After creating the User object and adding it to the list, call the saveUserData method
+        saveUserData();
+        System.out.println("User account created successfully.");
+        
     }
     
-    // Setter method for age
-    public void setAge(int age) {
-        this.age = age;
-}
-
-    // Getter method for isMale
-    public boolean isMale() {
-        return isMale;
-    }
-
-    // Setter method for isMale
-    public void setMale(boolean isMale) {
-        this.isMale = isMale;
-    }
-
-    // Getter method for heightFeet
-    public float getHeightFeet() {
-        return heightFeet;
-    }
-
-    // Setter method for heightFeet
-    public void setHeightFeet(float heightFeet) {
-        this.heightFeet = heightFeet;
-    }
-
-    // Getter method for heightInches
-    public float getHeightInches() {
-        return heightInches;
-    }
-
-    // Setter method for heightInches
-    public void setHeightInches(float heightInches) {
-        this.heightInches = heightInches;
-    }
-
-    // Getter method for weightPounds
-    public float getWeightPounds() {
-        return weightPounds;
-    }
-
-    // Setter method for weightPounds
-    public void setWeightPounds(float weightPounds) {
-        this.weightPounds = weightPounds;
-    }
-
-    // Getter method for activityLevelChoice
-    public int getActivityLevelChoice() {
-        return activityLevelChoice;
-    }
-
-    // Setter method for activityLevelChoice
-    public void setActivityLevelChoice(int activityLevelChoice) {
-        this.activityLevelChoice = activityLevelChoice;
-    }
-
-    // Getter method for weightGoal
-    public int getWeightGoal() {
-        return weightGoal;
-    }
-
-    // Setter method for weightGoal
-    public void setWeightGoal(int weightGoal) {
-        this.weightGoal = weightGoal;
-    }
-    
-    // Getter method for Username
-    public String getUsername() {
+    private String collectValidUsername() {
+        String username;
+        do {
+            System.out.print("Enter your username (8 to 20 characters): ");
+            username = scanner.nextLine();
+            if (username.length() < 8 || username.length() > 20) {
+                System.out.println("Username must be between 8 and 20 characters.");
+            }
+        } while (username.length() < 8 || username.length() > 20);
         return username;
     }
 
-    // Setter method for age
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    
-    // Getter method for age
-    public String getPassword() {
+    private String collectValidPassword() {
+        String password;
+        do {
+            System.out.print("Enter your password (at least 8 characters): ");
+            password = scanner.nextLine();
+            if (password.length() < 8) {
+                System.out.println("Password must be at least 8 characters long.");
+            }
+        } while (password.length() < 8);
         return password;
     }
 
-    // Setter method for age
-    public void setPassword(String password) {
-        this.password = password;
+    private String collectValidName() {
+        System.out.print("Enter your name: ");
+        return scanner.nextLine();
     }
-    
-    public void collectUserInput() {
-        Scanner scanner = new Scanner(System.in);
-        
-        
-        //Add error check if its between 16 and 80
-        try {
-            System.out.print("Enter your age (years): ");
-            age = scanner.nextInt();
 
-            do {
-                System.out.print("Enter your sex (1 for Male, 2 for Female): ");
-                int sexChoice = scanner.nextInt();
+    private int collectValidAge() {
+        int age;
+        do {
+            System.out.print("Enter your age (16 to 80 years): ");
+            try {
+                age = Integer.parseInt(scanner.nextLine());
+                if (age < 16 || age > 80) {
+                    System.out.println("Age must be between 16 and 80 years.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid age input. Please enter a valid number.");
+                age = -1; // Set age to an invalid value to loop again
+            }
+        } while (age < 16 || age > 80);
+        return age;
+    }
+
+    private boolean collectValidSex() {
+        boolean isMale;
+        do {
+            System.out.print("Enter your sex (1 for Male, 2 for Female): ");
+            int sexChoice;
+            try {
+                sexChoice = Integer.parseInt(scanner.nextLine());
                 if (sexChoice == 1) {
                     isMale = true;
                 } else if (sexChoice == 2) {
                     isMale = false;
                 } else {
                     System.out.println("Invalid sex choice. Please enter 1 for Male or 2 for Female.");
+                    isMale = false; // Reset isMale to false in case of invalid input
                 }
-            } while (!isMale && isMale);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter 1 for Male or 2 for Female.");
+                isMale = false; // Reset isMale to false in case of invalid input
+            }
+        } while (!isMale);
+        return isMale;
+    }
 
-            do {
-                System.out.print("Enter your height (Feet, maximum 8): ");
-                heightFeet = scanner.nextFloat();
+    private float collectValidHeightFeet() {
+        float heightFeet;
+        do {
+            System.out.print("Enter your height (Feet, maximum 8): ");
+            try {
+                heightFeet = Float.parseFloat(scanner.nextLine());
                 if (heightFeet < 0 || heightFeet > 8) {
                     System.out.println("Invalid height. Please enter a value between 0 and 8 feet.");
                 }
-            } while (heightFeet < 0 || heightFeet > 8);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                heightFeet = -1; // Set heightFeet to an invalid value to loop again
+            }
+        } while (heightFeet < 0 || heightFeet > 8);
+        return heightFeet;
+    }
 
-            do {
-                System.out.print("Enter your height (Inches, maximum 11): ");
-                heightInches = scanner.nextFloat();
+    private float collectValidHeightInches() {
+        float heightInches;
+        do {
+            System.out.print("Enter your height (Inches, maximum 11): ");
+            try {
+                heightInches = Float.parseFloat(scanner.nextLine());
                 if (heightInches < 0 || heightInches >= 12) {
                     System.out.println("Invalid height. Please enter a value between 0 and 11 inches.");
                 }
-            } while (heightInches < 0 || heightInches >= 12);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                heightInches = -1; // Set heightInches to an invalid value to loop again
+            }
+        } while (heightInches < 0 || heightInches >= 12);
+        return heightInches;
+    }
 
+    private float collectValidWeight() {
+        float weightPounds;
+        do {
             System.out.print("Enter your weight (Pounds): ");
-            weightPounds = scanner.nextFloat();
+            try {
+                weightPounds = Float.parseFloat(scanner.nextLine());
+                if (weightPounds < 0) {
+                    System.out.println("Invalid weight. Please enter a non-negative value.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                weightPounds = -1; // Set weightPounds to an invalid value to loop again
+            }
+        } while (weightPounds < 0);
+        return weightPounds;
+    }
 
-            do {
-                System.out.print("Enter your current activity level (1 to 5):\n" +
-                        "1. Sedentary\n" +
-                        "2. Lightly active\n" +
-                        "3. Moderately active\n" +
-                        "4. Very active\n" +
-                        "5. Extra active\n" +
-                        "Select an option: ");
-                activityLevelChoice = scanner.nextInt();
+    private int collectValidActivityLevel() {
+        int activityLevelChoice;
+        do {
+            System.out.print("Enter your current activity level (1 to 5):\n" +
+                    "1. Sedentary\n" +
+                    "2. Lightly active\n" +
+                    "3. Moderately active\n" +
+                    "4. Very active\n" +
+                    "5. Extra active\n" +
+                    "Select an option: ");
+            try {
+                activityLevelChoice = Integer.parseInt(scanner.nextLine());
                 if (activityLevelChoice < 1 || activityLevelChoice > 5) {
                     System.out.println("Invalid activity level choice. Please select a number between 1 and 5.");
                 }
-            } while (activityLevelChoice < 1 || activityLevelChoice > 5);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                activityLevelChoice = -1; // Set activityLevelChoice to an invalid value to loop again
+            }
+        } while (activityLevelChoice < 1 || activityLevelChoice > 5);
+        return activityLevelChoice;
+    }
 
-            do {
-                System.out.print("Enter your weight goal (1 for Maintain, 2 for Lose, 3 for Gain): ");
-                weightGoal = scanner.nextInt();
-                if (weightGoal < 1 || weightGoal > 3) {
-                    System.out.println("Invalid weight goal choice. Please select 1, 2, or 3.");
-                }
-            } while (weightGoal < 1 || weightGoal > 3);
-
-        } catch (InputMismatchException e) {
-            System.out.println("Invalid input. Please enter valid numerical values.");
-        } finally {
-            scanner.close();
+     
+    private void saveUserData() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            for (User user : users) {
+                // Write each user's information to the file
+                writer.write(user.getUsername() + "," +
+                             user.getPassword() + "," +
+                             user.getIsMale() + "," +
+                             user.getHeight() + "," +
+                             user.getWeightPounds() + "," +
+                             user.getActivityLevelChoice() + "," +
+                             user.getName());
+                writer.newLine();
+            }
+            System.out.println("User data saved successfully.");
+        } catch (IOException e) {
+            System.out.println("Error while saving user data: " + e.getMessage());
         }
     }
     
-    
+    public boolean login(String username, String password) {
+        // Read user data from the file and store it in memory
+        ArrayList<User> storedUsers = readUserDataFromFile();
 
+        // Search for a user with the provided username and password
+        for (User user : storedUsers) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                // Found a matching user
+                return true;
+            }
+        }
+
+        // No matching user found
+        System.out.println("Account does not exist.");
+        return false;
+    }
+    
+    private ArrayList<User> readUserDataFromFile() {
+        ArrayList<User> storedUsers = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Parse each line to create User objects and add them to the list
+                String[] userData = line.split(",");
+                if (userData.length == 7) {
+                    String storedUsername = userData[0];
+                    String storedPassword = userData[1];
+                    boolean storedIsMale = Boolean.parseBoolean(userData[2]);
+                    double storedHeight = Double.parseDouble(userData[3]);
+                    float storedWeightPounds = Float.parseFloat(userData[4]);
+                    int storedActivityLevelChoice = Integer.parseInt(userData[5]);
+                    String storedName = userData[6];
+
+                    User storedUser = new User(storedUsername, storedPassword, storedIsMale, storedHeight, storedWeightPounds, storedActivityLevelChoice, storedName);
+                    storedUsers.add(storedUser);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading user data from file.");
+        }
+
+        return storedUsers;
+    }
 }
