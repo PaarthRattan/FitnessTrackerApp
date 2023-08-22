@@ -182,15 +182,12 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                                 .addComponent(btnExit))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(101, 101, 101)
-                                .addComponent(lbl5)))
+                                .addComponent(lbl5)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl4)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbl7)
                                 .addGap(18, 18, 18)
@@ -213,7 +210,11 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                                 .addComponent(lbl9)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnCaloriesBurntDescending))
+                            .addComponent(btnCaloriesBurntDescending)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl4)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
@@ -259,17 +260,17 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl10)
-                            .addComponent(txtNeedsGym, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9)
+                            .addComponent(lbl6)
+                            .addComponent(txtCalsBurned, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl4)
                             .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl6)
-                            .addComponent(txtCalsBurned, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lbl10)
+                            .addComponent(txtNeedsGym, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl7)
                             .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -277,7 +278,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                         .addComponent(btnAddActivity)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl5)))
-                .addGap(82, 82, 82))
+                .addGap(88, 88, 88))
         );
 
         pack();
@@ -302,7 +303,11 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
     private void btnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortActionPerformed
         // TODO add your handling code here:
         
-        if (btnCaloriesBurntAscending.isSelected()) {
+        if (!BtnChronoDescending.isSelected() && !btnCaloriesBurntAscending.isSelected() && !btnCaloriesBurntDescending.isSelected()
+                && !btnCategoryCardio.isSelected() && !btnCategoryStrength.isSelected() && !btnChronoAscending.isSelected()) {
+            txtSmall.setText("Please choose a sorting order.");
+        }
+        else if (btnCaloriesBurntAscending.isSelected()) {
             List<String> sortedExercises = sortExercisesByCaloriesAscending();
             displaySortedExercises(sortedExercises);
         }
