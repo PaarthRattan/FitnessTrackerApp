@@ -6,12 +6,15 @@ package com.mycompany.fitnesstrackerapp;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
@@ -288,6 +291,12 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    String name = "";
+    int cals = 0;
+    String category = "";
+    String needsGym = "";
+    String date = "";
+    
     private void btnCaloriesBurntAscendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaloriesBurntAscendingActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCaloriesBurntAscendingActionPerformed
@@ -343,54 +352,45 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
 
     private void btnAddActivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActivityActionPerformed
         // TODO add your handling code here:
-        
-        
-        
+        ArrayList <String> logs = new ArrayList<>();
         try {
-            
+             txtSmall.setText("");
             if (txtCalsBurned.getText().equalsIgnoreCase("") && txtCategory.getText().equalsIgnoreCase("")
                 && txtDate.getText().equalsIgnoreCase("") && txtName.getText().equalsIgnoreCase("") 
                 && txtDate.getText().equalsIgnoreCase("")) {
                 txtSmall.setText("Error: fields are blank");
             }
             
-            String name = txtName.getText();
-            int cals = Integer.parseInt(txtCalsBurned.getText());
-            String category = txtCategory.getText();
-            String needsGymString = txtNeedsGym.getText();
-            String date = txtDate.getText();
+            name = txtName.getText();
+            cals = Integer.parseInt(txtCalsBurned.getText());
+            category = txtCategory.getText();
+            needsGym = txtNeedsGym.getText();
+            date = txtDate.getText();
             
             
-            if (!needsGymString.equalsIgnoreCase("yes") && !needsGymString.equalsIgnoreCase("no")) {
+            if (!needsGym.equalsIgnoreCase("yes") && !needsGym.equalsIgnoreCase("no")) {
                 txtSmall.setText("Enter yes or no for 'needs gym'");
+                
             }
-            else {
-                txtSmall.setText(null);
-                if (!category.equalsIgnoreCase("cardio") && !category.equalsIgnoreCase("strength")) {
-                    txtSmall.setText("Enter a valid category");
-                }
-                else {
-                    txtSmall.setText(null);
-                    if (cals > 1500 || cals < 0) {
-                        txtSmall.setText("Enter a valid amount of calories burned");
-                    }
-                    else {
-                        if (!isValidDate(date)) {
-                            txtSmall.setText("Enter a date in the valid format (MM/DD/YYYY)");
-                        }
-                    }
-                }
+            else if (!category.equalsIgnoreCase("cardio") && !category.equalsIgnoreCase("strength")) {
+               txtSmall.setText("Enter a valid category");
             }
             
+            else if (cals > 1500 || cals < 0) {
+                txtSmall.setText("Enter a valid amount of calories burned");
+            }
+            else if (!isValidDate(date)){
+                txtSmall.setText("Enter a date in the valid format (MM/DD/YYYY)");
+            }
             
-            
-            
-            
-        }
+            else{
+                storeOldLogs(logs, "src\\main\\java\\com\\mycompany\\fitnesstrackerapp\\ActivityLog.txt");
+                addLog(logs, "src\\main\\java\\com\\mycompany\\fitnesstrackerapp\\ActivityLog.txt");
+            }
+        }  
         catch (NumberFormatException nfe) {
             txtSmall.setText("Error: enter valid values");
         }
-        
     }//GEN-LAST:event_btnAddActivityActionPerformed
   
     //Method to check if date entered by user is of valid format,*/
@@ -547,6 +547,52 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         txtBig.setText(""); // Clear the JTextArea
         for (String exercise : sortedExercises) {
             txtBig.append(exercise + "\n");
+        }
+    }
+    
+     private String createLog(){
+        return "Exercise Name:" + name + ", Calories Burned:" + cals + ", Category: " + category + ", Needs a Gym: " + needsGym + ", Date:" + date;
+    }
+    
+    private void storeOldLogs(List<String> logs, String filepath){
+        try {
+            BufferedReader r = new BufferedReader(new FileReader(filepath));
+
+            while (r.ready()) {
+                String store = r.readLine().toString();
+                logs.add(store);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ActivityLog.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        for (String log : logs) {
+            String store = log;
+            System.out.println(store);
+        }
+    }
+    
+    private void addLog(List<String> logs, String filepath){
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(filepath);
+            BufferedReader r = new BufferedReader(new FileReader(filepath));
+            
+            String activityLog = createLog();
+            System.out.println(activityLog);
+            logs.add(activityLog);
+            for (int i = 0; i < logs.size(); i++) {
+                if (!r.ready()) {
+                    fileWriter.write(logs.get(i) + "\n");
+                } else {
+                    fileWriter.write("\r");
+                    i--;
+                }
+            }   
+            fileWriter.close();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(ActivityLog.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
