@@ -42,7 +42,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lbl1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnCaloriesBurnt" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCaloriesBurntAscending" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnExit" min="-2" max="-2" attributes="0"/>
@@ -88,6 +88,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="txtName" min="-2" pref="114" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="btnCaloriesBurntDescending" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="227" max="32767" attributes="0"/>
                   </Group>
@@ -120,8 +121,10 @@
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="lbl2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnCaloriesBurnt" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCaloriesBurntAscending" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnCaloriesBurntDescending" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                       <Component id="btnChronoAscending" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="BtnChronoDescending" min="-2" max="-2" attributes="0"/>
@@ -131,7 +134,7 @@
                       <Component id="btnCategoryStrength" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnSort" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                       <Component id="lbl3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -215,7 +218,7 @@
         <Property name="text" type="java.lang.String" value="Sort By:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="btnCaloriesBurnt">
+    <Component class="javax.swing.JRadioButton" name="btnCaloriesBurntAscending">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
@@ -223,7 +226,7 @@
         <Property name="text" type="java.lang.String" value="Calories Burnt (Ascending)"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCaloriesBurntActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCaloriesBurntAscendingActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="btnChronoAscending">
@@ -321,6 +324,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Exit"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExitActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="btnCategoryStrength">
       <Properties>
@@ -349,6 +355,17 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Needs gym? (yes or no)"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="btnCaloriesBurntDescending">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Calories Burnt (Descending)"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCaloriesBurntDescendingActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

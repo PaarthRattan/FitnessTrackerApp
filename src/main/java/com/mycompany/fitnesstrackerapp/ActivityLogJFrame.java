@@ -4,6 +4,13 @@
  */
 package com.mycompany.fitnesstrackerapp;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  *
  * @author VihoHuang
@@ -33,7 +40,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         txtSmall = new javax.swing.JTextField();
         lbl1 = new javax.swing.JLabel();
         lbl2 = new javax.swing.JLabel();
-        btnCaloriesBurnt = new javax.swing.JRadioButton();
+        btnCaloriesBurntAscending = new javax.swing.JRadioButton();
         btnChronoAscending = new javax.swing.JRadioButton();
         BtnChronoDescending = new javax.swing.JRadioButton();
         btnCategoryCardio = new javax.swing.JRadioButton();
@@ -53,6 +60,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         lbl9 = new javax.swing.JLabel();
         txtNeedsGym = new javax.swing.JTextField();
         lbl10 = new javax.swing.JLabel();
+        btnCaloriesBurntDescending = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Activity Logs");
@@ -73,11 +81,11 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         lbl2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl2.setText("Sort By:");
 
-        buttonGroup1.add(btnCaloriesBurnt);
-        btnCaloriesBurnt.setText("Calories Burnt (Ascending)");
-        btnCaloriesBurnt.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(btnCaloriesBurntAscending);
+        btnCaloriesBurntAscending.setText("Calories Burnt (Ascending)");
+        btnCaloriesBurntAscending.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCaloriesBurntActionPerformed(evt);
+                btnCaloriesBurntAscendingActionPerformed(evt);
             }
         });
 
@@ -129,6 +137,11 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         btnAddActivity.setText("Add Activity");
 
         btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(btnCategoryStrength);
         btnCategoryStrength.setText("Category: Strength");
@@ -138,6 +151,14 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
 
         lbl10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl10.setText("Needs gym? (yes or no)");
+
+        buttonGroup1.add(btnCaloriesBurntDescending);
+        btnCaloriesBurntDescending.setText("Calories Burnt (Descending)");
+        btnCaloriesBurntDescending.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaloriesBurntDescendingActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,7 +177,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbl1)
                                     .addComponent(lbl2)
-                                    .addComponent(btnCaloriesBurnt))
+                                    .addComponent(btnCaloriesBurntAscending))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnExit))
                             .addGroup(layout.createSequentialGroup()
@@ -191,7 +212,8 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbl9)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnCaloriesBurntDescending))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
@@ -216,8 +238,10 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                         .addGap(8, 8, 8)
                         .addComponent(lbl2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCaloriesBurnt)
+                        .addComponent(btnCaloriesBurntAscending)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCaloriesBurntDescending)
+                        .addGap(3, 3, 3)
                         .addComponent(btnChronoAscending)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtnChronoDescending)
@@ -227,7 +251,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                         .addComponent(btnCategoryStrength)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSort)
-                        .addGap(93, 93, 93)
+                        .addGap(69, 69, 69)
                         .addComponent(lbl3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -259,9 +283,9 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCaloriesBurntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaloriesBurntActionPerformed
+    private void btnCaloriesBurntAscendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaloriesBurntAscendingActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCaloriesBurntActionPerformed
+    }//GEN-LAST:event_btnCaloriesBurntAscendingActionPerformed
 
     private void btnChronoAscendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChronoAscendingActionPerformed
         // TODO add your handling code here:
@@ -278,11 +302,167 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
     private void btnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortActionPerformed
         // TODO add your handling code here:
         
+        if (btnCaloriesBurntAscending.isSelected()) {
+            List<String> sortedExercises = sortExercisesByCaloriesAscending();
+            displaySortedExercises(sortedExercises);
+        }
+        else if (btnCaloriesBurntDescending.isSelected()) {
+            List<String> sortedExercises = sortExercisesByCaloriesDescending();
+            displaySortedExercises(sortedExercises);
+        }
+        else if (btnCategoryCardio.isSelected()) {
+            List<String> sortedExercises = sortExercisesByCardio();
+            displaySortedExercises(sortedExercises);
+        }
+        else if (btnCategoryStrength.isSelected()) {
+            List<String> sortedExercises = sortExercisesByStrength();
+            displaySortedExercises(sortedExercises);
+        }
         
         
         
     }//GEN-LAST:event_btnSortActionPerformed
 
+    private void btnCaloriesBurntDescendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaloriesBurntDescendingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCaloriesBurntDescendingActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+        System.exit(0); // Exit the application. 
+    }//GEN-LAST:event_btnExitActionPerformed
+  
+    
+    private List<String> sortExercisesByCardio() {
+        List<String> exercises = new ArrayList<>();
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("exercises.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                exercises.add(line);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        List<String> validExercises = exercises.stream()
+            .filter(exercise -> {
+                String[] exerciseParts = exercise.split(",");
+                return exerciseParts.length >= 2 && exerciseParts[2].equalsIgnoreCase("Cardio");
+            })
+            .collect(Collectors.toList());
+
+        validExercises.sort((exercise1, exercise2) -> {
+            int calories1 = Integer.parseInt(exercise1.split(",")[1]);
+            int calories2 = Integer.parseInt(exercise2.split(",")[1]);
+            return Integer.compare(calories2, calories1); // Compare in descending order
+        });
+
+        return validExercises;
+    }
+    
+    
+    private List<String> sortExercisesByStrength() {
+        List<String> exercises = new ArrayList<>();
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("exercises.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                exercises.add(line);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        List<String> validExercises = exercises.stream()
+            .filter(exercise -> {
+                String[] exerciseParts = exercise.split(",");
+                return exerciseParts.length >= 2 && exerciseParts[2].equalsIgnoreCase("Strength");
+            })
+            .collect(Collectors.toList());
+
+        validExercises.sort((exercise1, exercise2) -> {
+            int calories1 = Integer.parseInt(exercise1.split(",")[1]);
+            int calories2 = Integer.parseInt(exercise2.split(",")[1]);
+            return Integer.compare(calories2, calories1); // Compare in descending order
+        });
+
+        return validExercises;
+    }
+    
+    
+    
+    
+    // Method to sort exercises by calories burnt in ascending order
+    private List<String> sortExercisesByCaloriesAscending() {
+        List<String> exercises = new ArrayList<>();
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("exercises.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                exercises.add(line);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        List<String> validExercises = exercises.stream()
+            .filter(exercise -> exercise.split(",").length >= 2)
+            .collect(Collectors.toList());
+
+        validExercises.sort((exercise1, exercise2) -> {
+            int calories1 = Integer.parseInt(exercise1.split(",")[1]);
+            int calories2 = Integer.parseInt(exercise2.split(",")[1]);
+            return Integer.compare(calories1, calories2);
+        });
+
+        return validExercises;
+    }
+    
+    private List<String> sortExercisesByCaloriesDescending() {
+        List<String> exercises = new ArrayList<>();
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("exercises.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                exercises.add(line);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        List<String> validExercises = exercises.stream()
+            .filter(exercise -> exercise.split(",").length >= 2)
+            .collect(Collectors.toList());
+
+        validExercises.sort((exercise1, exercise2) -> {
+            int calories1 = Integer.parseInt(exercise1.split(",")[1]);
+            int calories2 = Integer.parseInt(exercise2.split(",")[1]);
+            return Integer.compare(calories2, calories1); // Compare in descending order
+        });
+
+        return validExercises;
+    }
+
+    // Method to display sorted exercises in the JTextArea
+    private void displaySortedExercises(List<String> sortedExercises) {
+        txtBig.setText(""); // Clear the JTextArea
+        for (String exercise : sortedExercises) {
+            txtBig.append(exercise + "\n");
+        }
+    }
+
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -322,7 +502,8 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton BtnChronoDescending;
     private javax.swing.JButton btnAddActivity;
-    private javax.swing.JRadioButton btnCaloriesBurnt;
+    private javax.swing.JRadioButton btnCaloriesBurntAscending;
+    private javax.swing.JRadioButton btnCaloriesBurntDescending;
     private javax.swing.JRadioButton btnCategoryCardio;
     private javax.swing.JRadioButton btnCategoryStrength;
     private javax.swing.JRadioButton btnChronoAscending;
