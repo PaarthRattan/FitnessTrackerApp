@@ -43,14 +43,16 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         lbl5 = new javax.swing.JLabel();
         lbl6 = new javax.swing.JLabel();
         lbl7 = new javax.swing.JLabel();
-        lbl8 = new javax.swing.JLabel();
         txtCategory = new javax.swing.JTextField();
         txtCalsBurned = new javax.swing.JTextField();
         txtDate = new javax.swing.JTextField();
-        txtIntensity = new javax.swing.JTextField();
         btnAddActivity = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         btnCategoryStrength = new javax.swing.JRadioButton();
+        txtName = new javax.swing.JTextField();
+        lbl9 = new javax.swing.JLabel();
+        txtNeedsGym = new javax.swing.JTextField();
+        lbl10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Activity Logs");
@@ -104,6 +106,11 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         });
 
         btnSort.setText("Sort");
+        btnSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSortActionPerformed(evt);
+            }
+        });
 
         lbl3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl3.setText("Add activity to log:");
@@ -119,15 +126,18 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         lbl7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl7.setText("Date:");
 
-        lbl8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl8.setText("Intensity:");
-
         btnAddActivity.setText("Add Activity");
 
         btnExit.setText("Exit");
 
         buttonGroup1.add(btnCategoryStrength);
         btnCategoryStrength.setText("Category: Strength");
+
+        lbl9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl9.setText("Name:");
+
+        lbl10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl10.setText("Needs gym? (yes or no)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,7 +157,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                                     .addComponent(lbl1)
                                     .addComponent(lbl2)
                                     .addComponent(btnCaloriesBurnt))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnExit))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(101, 101, 101)
@@ -155,20 +165,15 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lbl3)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lbl4)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtCategory))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lbl7)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lbl8)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtIntensity, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lbl3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl4)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl7)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbl6)
                                 .addGap(18, 18, 18)
@@ -178,8 +183,16 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                             .addComponent(BtnChronoDescending)
                             .addComponent(btnCategoryCardio)
                             .addComponent(btnCategoryStrength)
-                            .addComponent(btnSort))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnSort)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl10)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNeedsGym, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl9)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
                     .addComponent(txtSmall))
@@ -190,7 +203,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(lbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSmall, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl1)
@@ -216,7 +229,15 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                         .addComponent(btnSort)
                         .addGap(93, 93, 93)
                         .addComponent(lbl3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl9)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl10)
+                            .addComponent(txtNeedsGym, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl4)
                             .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -228,15 +249,11 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl7)
                             .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl8)
-                            .addComponent(txtIntensity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAddActivity)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl5)))
-                .addGap(47, 47, 47))
+                .addGap(82, 82, 82))
         );
 
         pack();
@@ -257,6 +274,14 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
     private void btnCategoryCardioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoryCardioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCategoryCardioActionPerformed
+
+    private void btnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        
+    }//GEN-LAST:event_btnSortActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,18 +332,20 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl;
     private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lbl10;
     private javax.swing.JLabel lbl2;
     private javax.swing.JLabel lbl3;
     private javax.swing.JLabel lbl4;
     private javax.swing.JLabel lbl5;
     private javax.swing.JLabel lbl6;
     private javax.swing.JLabel lbl7;
-    private javax.swing.JLabel lbl8;
+    private javax.swing.JLabel lbl9;
     private javax.swing.JTextArea txtBig;
     private javax.swing.JTextField txtCalsBurned;
     private javax.swing.JTextField txtCategory;
     private javax.swing.JTextField txtDate;
-    private javax.swing.JTextField txtIntensity;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtNeedsGym;
     private javax.swing.JTextField txtSmall;
     // End of variables declaration//GEN-END:variables
 }
