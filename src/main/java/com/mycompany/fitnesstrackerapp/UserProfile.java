@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author admin
  */
 public class UserProfile {
-    
+   
     private int age;
     private boolean isMale;
     private float heightFeet;
@@ -22,16 +22,16 @@ public class UserProfile {
     private int weightGoal;
     private String username;
     private String password;
-    
+
     // Getter method for age
     public int getAge() {
         return age;
     }
-
+    
     // Setter method for age
     public void setAge(int age) {
         this.age = age;
-    }
+}
 
     // Getter method for isMale
     public boolean isMale() {

@@ -26,7 +26,7 @@ public class DietPlan {
         float weightPounds = userProfile.getWeightPounds();
         int activityLevelChoice = userProfile.getActivityLevelChoice();
         int weightGoal = userProfile.getWeightGoal();
-        
+     
     public void collectUserInput() {
         Scanner scanner = new Scanner(System.in);
 
@@ -43,7 +43,7 @@ public class DietPlan {
                     isMale = false;
                 } else {
                     System.out.println("Invalid sex choice. Please enter 1 for Male or 2 for Female.");
-                }
+}
             } while (!isMale && isMale);
 
             do {
