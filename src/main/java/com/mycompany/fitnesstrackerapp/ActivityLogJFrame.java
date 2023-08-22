@@ -7,7 +7,10 @@ package com.mycompany.fitnesstrackerapp;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -124,7 +127,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         lbl3.setText("Add activity to log:");
 
         lbl4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl4.setText("Category:");
+        lbl4.setText("Category (cardio or strength):");
 
         lbl5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -132,9 +135,14 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         lbl6.setText("Calories Burned:");
 
         lbl7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl7.setText("Date:");
+        lbl7.setText("Date (MM/DD/YYYY):");
 
         btnAddActivity.setText("Add Activity");
+        btnAddActivity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActivityActionPerformed(evt);
+            }
+        });
 
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +155,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         btnCategoryStrength.setText("Category: Strength");
 
         lbl9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl9.setText("Name:");
+        lbl9.setText("Name of exercise:");
 
         lbl10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl10.setText("Needs gym? (yes or no)");
@@ -172,21 +180,17 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl1)
-                                    .addComponent(lbl2)
-                                    .addComponent(btnCaloriesBurntAscending))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnExit))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(101, 101, 101)
-                                .addComponent(lbl5)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(lbl1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExit)
                         .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl2)
+                            .addComponent(btnCaloriesBurntAscending)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addComponent(lbl5))
                             .addComponent(lbl3)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbl7)
@@ -215,10 +219,10 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                                 .addComponent(lbl4)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                    .addComponent(txtSmall))
+                    .addComponent(txtSmall)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
@@ -336,7 +340,88 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0); // Exit the application. 
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnAddActivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActivityActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        try {
+            
+            if (txtCalsBurned.getText().equalsIgnoreCase("") && txtCategory.getText().equalsIgnoreCase("")
+                && txtDate.getText().equalsIgnoreCase("") && txtName.getText().equalsIgnoreCase("") 
+                && txtDate.getText().equalsIgnoreCase("")) {
+                txtSmall.setText("Error: fields are blank");
+            }
+            
+            String name = txtName.getText();
+            int cals = Integer.parseInt(txtCalsBurned.getText());
+            String category = txtCategory.getText();
+            String needsGymString = txtNeedsGym.getText();
+            String date = txtDate.getText();
+            
+            
+            if (!needsGymString.equalsIgnoreCase("yes") && !needsGymString.equalsIgnoreCase("no")) {
+                txtSmall.setText("Enter yes or no for 'needs gym'");
+            }
+            else {
+                txtSmall.setText(null);
+                if (!category.equalsIgnoreCase("cardio") && !category.equalsIgnoreCase("strength")) {
+                    txtSmall.setText("Enter a valid category");
+                }
+                else {
+                    txtSmall.setText(null);
+                    if (cals > 1500 || cals < 0) {
+                        txtSmall.setText("Enter a valid amount of calories burned");
+                    }
+                    else {
+                        if (!isValidDate(date)) {
+                            txtSmall.setText("Enter a date in the valid format (MM/DD/YYYY)");
+                        }
+                    }
+                }
+            }
+            
+            
+            
+            
+            
+        }
+        catch (NumberFormatException nfe) {
+            txtSmall.setText("Error: enter valid values");
+        }
+        
+    }//GEN-LAST:event_btnAddActivityActionPerformed
   
+    //Method to check if date entered by user is of valid format,*/
+    private boolean isValidDate(String date) {
+        // Create a SimpleDateFormat instance with the desired date format
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        // Set lenient to false, so the date parsing is strict and won't tolerate invalid dates
+        dateFormat.setLenient(false);
+
+        try {
+            // Try to parse the provided date using the defined format
+            Date parsedDate = dateFormat.parse(date);
+            String[] dateParts = date.split("/");
+
+            // Check if the date was successfully split into three parts (MM, DD, YYYY)
+            if (dateParts.length == 3) {
+                int day = Integer.parseInt(dateParts[1]);
+                int month = Integer.parseInt(dateParts[0]);
+                int year = Integer.parseInt(dateParts[2]);
+
+                // Check if day, month, and year values are within valid ranges
+                if (day >= 1 && day <= 31 && month >= 1 && month <= 12 && year >= 1000 && year <= 9999) {
+                    return true; // Valid date format
+                }
+            }
+        } catch (ParseException | NumberFormatException e) {
+            // Parsing failed (invalid date format or non-numeric values)
+        }
+        return false; // Invalid date format
+    }
+    
     
     private List<String> sortExercisesByCardio() {
         List<String> exercises = new ArrayList<>();
