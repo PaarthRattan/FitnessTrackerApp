@@ -17,15 +17,9 @@ public class ActivityLog {
     private UserProfile userProfile; // An instance of UserProfile
 
     public ActivityLog(UserProfile userProfile) {
-        this.userProfile = userProfile;
-    }
-    
-
-    
-
-
-    
-    }
+        this.userProfile = userProfile; 
+    }   
+}
         
         
         
