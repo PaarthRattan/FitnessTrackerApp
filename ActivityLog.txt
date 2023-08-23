@@ -1,1 +1,3 @@
-Exercise Name:light biking, Calories Burned:200, Category: cardio, Needs a Gym: no, Date:08/22/2023
+light biking,230,cardio,no,02/02/2023
+gym,220,strength,yes,02/01/2023
+dancing,100,cardio,no,01/01/2023

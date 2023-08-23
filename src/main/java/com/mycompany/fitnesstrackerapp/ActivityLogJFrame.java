@@ -188,11 +188,6 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnExit)
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl2)
                             .addComponent(btnCaloriesBurntAscending)
@@ -227,10 +222,16 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                                 .addComponent(lbl4)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSmall)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnExit)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtSmall, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
@@ -328,12 +329,12 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
             txtSmall.setText("Please choose a sorting order.");
         }
         else if (btnCaloriesBurntAscending.isSelected()) {
-            List<String> sortedExercises = sortExercisesByCaloriesAscending();
-            displaySortedExercises(sortedExercises);
+            List<String> sortedExercises = sortActivityLogByCaloriesAscending();
+            displaySortedActivityLog(sortedExercises);
         }
         else if (btnCaloriesBurntDescending.isSelected()) {
-            List<String> sortedExercises = sortExercisesByCaloriesDescending();
-            displaySortedExercises(sortedExercises);
+            List<String> sortedExercises = sortActivityLogByCaloriesDescending();
+            displaySortedActivityLog(sortedExercises);
         }
         
         else if(btnChronoAscending.isSelected()){
@@ -345,12 +346,12 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         }
         
         else if (btnCategoryCardio.isSelected()) {
-            List<String> sortedExercises = sortExercisesByCardio();
-            displaySortedExercises(sortedExercises);
+            List<String> sortedExercises = sortActivityLogByCardio();
+            displaySortedActivityLog(sortedExercises);
         }
         else if (btnCategoryStrength.isSelected()) {
-            List<String> sortedExercises = sortExercisesByStrength();
-            displaySortedExercises(sortedExercises);
+            List<String> sortedExercises = sortActivityLogByStrength();
+            displaySortedActivityLog(sortedExercises);
         }
         
         
@@ -439,7 +440,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
     }
     
     
-    private List<String> sortExercisesByCardio() {
+    private List<String> sortActivityLogByCardio() {
         List<String> exercises = new ArrayList<>();
 
         try {
@@ -470,7 +471,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
     }
     
     
-    private List<String> sortExercisesByStrength() {
+    private List<String> sortActivityLogByStrength() {
         List<String> exercises = new ArrayList<>();
 
         try {
@@ -504,7 +505,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
     
     
     // Method to sort exercises by calories burnt in ascending order
-    private List<String> sortExercisesByCaloriesAscending() {
+    private List<String> sortActivityLogByCaloriesAscending() {
         List<String> exercises = new ArrayList<>();
 
         try {
@@ -531,7 +532,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         return validExercises;
     }
     
-    private List<String> sortExercisesByCaloriesDescending() {
+    private List<String> sortActivityLogByCaloriesDescending() {
         List<String> exercises = new ArrayList<>();
 
         try {
@@ -574,6 +575,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         // Sort the activity log lines based on dates in ascending order
         Collections.sort(activityLogLines, Comparator.comparing(ActivityLogJFrame::extractDate));
 
+        txtBig.append("Exercise, Calories, Category, Needs a Gym, Date\n");
         // Print the sorted activity log lines
         for (String line : activityLogLines) {
             txtBig.append(line + "\n");
@@ -596,6 +598,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         // Sort the activity log lines based on dates in ascending order
         Collections.sort(activityLogLines, Comparator.comparing(ActivityLogJFrame::extractDate).reversed());
 
+        txtBig.append("Exercise, Calories, Category, Needs a Gym, Date\n");
         // Print the sorted activity log lines
         for (String line : activityLogLines) {
             txtBig.append(line + "\n");
@@ -605,21 +608,21 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
 
     private static LocalDate extractDate(String line) {
         // Extract and parse the date from the line
-        String dateString = line.split("Date:")[1].trim();
+        String dateString = line.split(",")[4].trim();
         return LocalDate.parse(dateString, DateTimeFormatter.ofPattern("MM/dd/yyyy"));
     }
     
     // Method to display sorted exercises in the JTextArea
-    private void displaySortedExercises(List<String> sortedExercises) {
+    private void displaySortedActivityLog(List<String> sortedExercises) {
         txtBig.setText(""); // Clear the JTextArea
         txtBig.append("Exercise, Calories, Category, Needs a Gym, Date");
         for (String exercise : sortedExercises) {
-            txtBig.append("\n" + exercise );
+            txtBig.append("\n" + exercise);
         }
     }
     
      private String createLog(){
-        return name + ", cals Burned" + cals + "," + category + "," + needsGym + ", Date:" + date;
+        return name + "," + cals + "," + category + "," + needsGym + "," + date;
     }
      
     
