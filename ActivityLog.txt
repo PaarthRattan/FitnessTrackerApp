@@ -1,2 +1,3 @@
-
-Hiking, cals Burned200,cardio,no, Date:03/21/2006
+biking,200,cardio,yes,03/21/2006,Gurbir21
+hiking,240,cardio,yes,03/21/2006,Gurbir21
+dancing,215,cardio,yes,03/21/2006,Gurbir21

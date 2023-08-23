@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.fitnesstrackerapp;
 
 import java.awt.event.ActionEvent;
@@ -33,7 +29,6 @@ public class CreateAccountScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField3 = new javax.swing.JTextField();
         SexButtonGroup = new javax.swing.ButtonGroup();
         lblIntro = new javax.swing.JLabel();
         lblUsername = new javax.swing.JLabel();
@@ -55,13 +50,6 @@ public class CreateAccountScreen extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         txtResult = new javax.swing.JTextField();
 
-        jTextField3.setText("jTextField1");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblIntro.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
@@ -77,7 +65,7 @@ public class CreateAccountScreen extends javax.swing.JFrame {
 
         lblSex.setText("Sex: ");
 
-        lblHeight.setText("Height (Inches): ");
+        lblHeight.setText("Height (cm): ");
 
         lblWeight.setText("Weight (lbs)");
 
@@ -91,6 +79,12 @@ public class CreateAccountScreen extends javax.swing.JFrame {
 
         SexButtonGroup.add(btnFemale);
         btnFemale.setText("Female");
+
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
 
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,10 +203,6 @@ public class CreateAccountScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsernameActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
     private void btnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMaleActionPerformed
@@ -269,8 +259,8 @@ public class CreateAccountScreen extends javax.swing.JFrame {
             return;
         }
 
-        if (height < 48) {
-            txtResult.setText("Height must be at least 48 inches.");
+        if (height < 122) {
+            txtResult.setText("Height must be at least 122 cm.");
             processing = false; // Reset the processing flag on error
             return;
         }
@@ -356,6 +346,10 @@ public class CreateAccountScreen extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
     // Event handler initialization
     private void initializeEventHandlers() {
         btnCreateAccount.addActionListener(new ActionListener() {
@@ -413,7 +407,6 @@ public class CreateAccountScreen extends javax.swing.JFrame {
     private javax.swing.JButton btnCreateAccount;
     private javax.swing.JRadioButton btnFemale;
     private javax.swing.JRadioButton btnMale;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblHeight;
     private javax.swing.JLabel lblIntro;
