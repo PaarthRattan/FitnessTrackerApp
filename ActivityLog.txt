@@ -1,3 +1,5 @@
-light biking,230,cardio,no,02/02/2023
-gym,220,strength,yes,02/01/2023
-dancing,100,cardio,no,01/01/2023
+biking,200,cardio,yes,03/21/2006,Gurbir21
+hiking,240,cardio,yes,03/21/2006,Gurbir21
+dancing,215,cardio,yes,03/21/2006,Gurbir21
+slapping,111,cardio,yes,03/12/3002,viho1234
+awerwer,122,cardio,no,03/12/3001,viho1234
