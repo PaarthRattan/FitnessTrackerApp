@@ -443,7 +443,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         List<String> exercises = new ArrayList<>();
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("exercises.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("ActivityLog.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
                 exercises.add(line);
@@ -474,7 +474,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         List<String> exercises = new ArrayList<>();
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("exercises.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("ActivityLog.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
                 exercises.add(line);
@@ -508,7 +508,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         List<String> exercises = new ArrayList<>();
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("exercises.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("ActivityLog.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
                 exercises.add(line);
@@ -535,7 +535,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         List<String> exercises = new ArrayList<>();
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("exercises.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("ActivityLog.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
                 exercises.add(line);
