@@ -1,0 +1,12 @@
+﻿* Non-Veg, Mediterranean Diet, 2000, Olive oil, grilled salmon, whole wheat pasta, mixed vegetables, hummus.
+* Non-Veg, Balanced Diet, 2000, Grilled chicken breast, quinoa, steamed broccoli, mixed berries, Greek yogurt.
+* Veg, Vegan Diet, 2000, Tofu stir-fry with vegetables, brown rice, almond butter, whole wheat bread, fruits.
+* Non-Veg, Low-Carb Diet, 2000, Grilled steak, cauliflower rice, avocado, spinach salad, berries.
+* Non-Veg, Paleo Diet, 2000, Lean meats, fish, eggs, nuts, seeds, vegetables, fruits.
+* Non-Veg, High-Protein Diet, 2000, Baked chicken thigh, black beans, sweet potatoes, cottage cheese, mixed nuts.
+* Non-Veg, Mediterranean Diet, 3000, Grilled swordfish, whole grain couscous, roasted vegetables, olives, Greek salad.
+* Non-Veg, Balanced Diet, 3000, Lean beef stir-fry, quinoa, steamed asparagus, mixed berries, whole wheat bread.
+* Veg, Vegan Diet, 3000, Lentil curry, brown rice, mixed nuts, almond butter, whole wheat bread.
+* Non-Veg, Low-Carb Diet, 3000, Grilled chicken breast, broccoli cheddar soup, avocado, mixed nuts, berries.
+* Non-Veg, High-Protein Diet, 3000, Salmon fillet, chickpea salad, sweet potatoes, cottage cheese, mixed nuts.
+* Veg, Intermittent Fasting, 3000, Green salad with greek yogurt, olive oil dressing, mixed nuts, fruits, water
