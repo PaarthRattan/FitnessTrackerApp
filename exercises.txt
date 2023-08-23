@@ -23,22 +23,21 @@ Leg Extension Machine,200,Strength,Yes
 Seated Row Machine,250,Strength,Yes
 Hamstring Curl Machine,200,Strength,Yes
 Smith Machine Exercises,300,Strength,Yes
-Swimming,500,Cardio,Yes
-Cycling (Outdoor),450,Cardio,Yes
-Stair Climbing,350,Cardio,No
-Zumba,400,Cardio,No
-Kickboxing,550,Cardio,No
-CrossFit Workout,600,Cardio,Yes
-Jump Rope (Intense),400,Cardio,No
-Hiking,300,Cardio,No
-Deadlifts,350,Strength,Yes
-Bench Press,300,Strength,Yes
-Overhead Press,250,Strength,Yes
-Romanian Deadlifts,300,Strength,Yes
-Kettlebell Swings,300,Strength,Yes
-Pull-Ups/Chin-Ups,250,Strength,Yes
-Push Press,250,Strength,Yes
-Leg Raises,200,Strength,No
-Russian Twists,200,Strength,No
-Farmer's Walk,300,Strength,Yes
-**
+Swimming, 500, Cardio, Yes
+Cycling (Outdoor), 450, Cardio, Yes
+Stair Climbing, 350, Cardio, No
+Zumba, 400, Cardio, No
+Kickboxing, 550, Cardio, No
+CrossFit Workout, 600, Both, Yes
+Jump Rope (Intense), 400, Cardio, No
+Hiking, 300, Cardio, No
+Deadlifts, 350, Strength, Yes
+Bench Press, 300, Strength, Yes
+Overhead Press, 250, Strength, Yes
+Romanian Deadlifts, 300, Strength, Yes
+Kettlebell Swings, 300, Strength, Yes
+Pull-Ups/Chin-Ups, 250, Strength, Yes
+Push Press, 250, Strength, Yes
+Leg Raises, 200, Strength, No
+Russian Twists, 200, Strength, No
+Farmer's Walk, 300, Strength, Yes
