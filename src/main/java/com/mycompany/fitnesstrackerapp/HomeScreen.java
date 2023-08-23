@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.fitnesstrackerapp;
 
 import javax.swing.ImageIcon;
@@ -30,7 +26,7 @@ public class HomeScreen extends javax.swing.JFrame {
     
     public HomeScreen() {
         initComponents();
-        lblImage.setIcon(fitnessLogo);
+        lblImage.setIcon(fitnessLogo); // Setting the lblImage to the icon to display the image
     }
 
     /**
@@ -127,6 +123,7 @@ public class HomeScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Pressing this button brings the user to the LoginScreen
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         
@@ -138,9 +135,11 @@ public class HomeScreen extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    // Pressing this button brings the user to the CreateAccountScreen
     private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
         // TODO add your handling code here:
         
+        // Creare and show the CreateAccountScreen when the "Create Account" button is pressed
         CreateAccountScreen createAccountScreen = new CreateAccountScreen();
         createAccountScreen.setVisible(true);
 
