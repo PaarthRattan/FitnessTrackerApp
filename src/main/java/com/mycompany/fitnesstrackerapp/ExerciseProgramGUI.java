@@ -383,7 +383,7 @@ public class ExerciseProgramGUI extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_butCategoryActionPerformed
   
-    // Returns a list of exercises that fall within the specified calorie range
+    // Returns a list of exercises that fall within the specified Calorie range
     public static List<Exercise> getExercisesInRange(List<Exercise> exercises, int minCalories, int maxCalories) {
         List<Exercise> exercisesInRange = new ArrayList<>();
         for (Exercise exercise : exercises) {
