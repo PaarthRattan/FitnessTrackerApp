@@ -443,7 +443,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         List<String> exercises = new ArrayList<>();
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("exercises.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("ActivityLog.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
                 exercises.add(line);
@@ -474,7 +474,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         List<String> exercises = new ArrayList<>();
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("exercises.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("ActivityLog.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
                 exercises.add(line);
@@ -508,7 +508,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         List<String> exercises = new ArrayList<>();
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("exercises.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("ActivityLog.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
                 exercises.add(line);
@@ -535,7 +535,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         List<String> exercises = new ArrayList<>();
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("exercises.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("ActivityLog.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
                 exercises.add(line);
@@ -612,14 +612,17 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
     // Method to display sorted exercises in the JTextArea
     private void displaySortedExercises(List<String> sortedExercises) {
         txtBig.setText(""); // Clear the JTextArea
+        txtBig.append("Exercise, Calories, Category, Needs a Gym, Date");
         for (String exercise : sortedExercises) {
-            txtBig.append(exercise + "\n");
+            txtBig.append("\n" + exercise );
         }
     }
     
      private String createLog(){
-        return name + "," + cals + "," + category + "," + needsGym + "," + date;
+        return name + ", cals Burned" + cals + "," + category + "," + needsGym + ", Date:" + date;
     }
+     
+    
     
     private void storeOldLogs(List<String> logs, String filepath){
         try {
