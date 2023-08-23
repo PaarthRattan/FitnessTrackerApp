@@ -65,7 +65,7 @@ public class CreateAccountScreen extends javax.swing.JFrame {
 
         lblSex.setText("Sex: ");
 
-        lblHeight.setText("Height (Inches): ");
+        lblHeight.setText("Height (cm): ");
 
         lblWeight.setText("Weight (lbs)");
 
@@ -259,8 +259,8 @@ public class CreateAccountScreen extends javax.swing.JFrame {
             return;
         }
 
-        if (height < 48) {
-            txtResult.setText("Height must be at least 48 inches.");
+        if (height < 122) {
+            txtResult.setText("Height must be at least 122 cm.");
             processing = false; // Reset the processing flag on error
             return;
         }

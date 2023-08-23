@@ -173,7 +173,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblHeight">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Height (Inches): "/>
+        <Property name="text" type="java.lang.String" value="Height (cm): "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblWeight">
