@@ -1,10 +1,23 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+
+
+ */
 package com.mycompany.fitnesstrackerapp;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.concurrent.ExecutionException;
-import javax.swing.SwingWorker;
-import javax.swing.Timer;
+// Import statements for handling user interface events and concurrency
+import java.awt.event.ActionEvent;          // Provides classes for defining and working with Action events.
+import java.awt.event.ActionListener;       // An interface for receiving action events.
+import java.util.concurrent.ExecutionException;  // An exception that indicates a problem during the execution of a task.
+import javax.swing.SwingWorker;             // A background task execution framework for Swing-based user interfaces.
+import javax.swing.Timer;                   // Fires one or more action events after a specified delay.
+
+
+/**
+ * Represents the Create Account screen in the fitness tracker app.
+ * This class handles user input to create new user accounts.
+ */
 
 /**
  *

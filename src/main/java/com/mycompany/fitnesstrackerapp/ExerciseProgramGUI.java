@@ -1,10 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
-
-In this class, the program evaluates what the user desires and lists exercises 
-along with the calories burnt and other such properties of the exercise. It 
-aids the user to know what exercises to do if they want to burn calories or gain muscle. 
  */
 package com.mycompany.fitnesstrackerapp;
 import java.io.BufferedReader; //importing reader to read text file
@@ -16,10 +12,12 @@ import java.util.List; //importing the properties to use a List
 import java.util.Map; //importing map to make the code run faster and smoother 
 
 
-/**
- *
- * @author sande
+/*
+In this class, the program evaluates what the user desires and lists exercises 
+along with the calories burnt and other such properties of the exercise. It 
+aids the user to know what exercises to do if they want to burn calories or gain muscle. 
  */
+
 public class ExerciseProgramGUI extends javax.swing.JFrame {
     List<Exercise> exercises = readExercisesFromFile("exercises.txt"); //Listens everything in the text
     Map<String, List<Exercise>> categorizedExercises = categorizeExercises(exercises); //creates a List
@@ -330,14 +328,20 @@ public class ExerciseProgramGUI extends javax.swing.JFrame {
             // Parse the input into integer values
             int minCalories = Integer.parseInt(minCaloriesInput);
             int maxCalories = Integer.parseInt(maxCaloriesInput);
-            
-            if (minCalories < 0 || maxCalories < 0){ //if the user enters calories less then 0, the user is prompted for proper input
-                txtUpdate.setText("Plese enter a valid amount for the number of calories per hour!");
-            }           
-
             // Clear the text outputs area
             clear();
-
+            
+        if (minCalories < 0 || maxCalories < 0) { // if the user enters improper inputs for calories, the following will be shown in the txtUpdate so the user is known of the issue 
+            if (minCalories < 0 && maxCalories < 0) {
+                txtUpdate.setText("Please enter valid positive numbers for both minimum and maximum calories per hour!");
+            } else if (minCalories < 0) {
+                txtUpdate.setText("Please enter a valid positive number for the minimum calories per hour!");
+            } else if (minCalories > maxCalories){
+            } else {
+                txtUpdate.setText("Please enter a valid positive number for the maximum calories per hour!");
+            }
+        }         
+        else {
             // Retrieve and display exercises within the specified calorie range
             List<Exercise> exercisesInRange = getExercisesInRange(exercises, minCalories, maxCalories);
             if (!exercisesInRange.isEmpty()) {
@@ -345,9 +349,8 @@ public class ExerciseProgramGUI extends javax.swing.JFrame {
                 for (Exercise exercise : exercisesInRange) {
                     txtOutputs.append(exercise.name + ": " + exercise.caloriesBurned + "\n");
                 }
-            } else {
-                txtUpdate.setText("No exercises found within the specified calorie range.\n");
-            }
+            } 
+        }
         } catch (NumberFormatException e) {
             // Display an error message if the user did not provide valid integer values for calories
             txtUpdate.setText("Please enter valid integer values for calories.\n");

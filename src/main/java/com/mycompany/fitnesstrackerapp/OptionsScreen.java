@@ -5,9 +5,10 @@
 package com.mycompany.fitnesstrackerapp;
 
 /**
- *
- * @author paart
+ * Represents the options screen of the fitness tracker app.
+ * Users can choose from various features such as diet planning, activity log, and exercise program.
  */
+
 public class OptionsScreen extends javax.swing.JFrame {
 
     /**

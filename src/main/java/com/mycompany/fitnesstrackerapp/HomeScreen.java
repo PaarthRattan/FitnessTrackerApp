@@ -3,9 +3,10 @@ package com.mycompany.fitnesstrackerapp;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author paart
+ * Represents the home screen of the fitness tracker app.
+ * Users can choose to log in or create an account from this screen.
  */
+
 public class HomeScreen extends javax.swing.JFrame {
 
     /**
