@@ -7,9 +7,7 @@ import java.io.BufferedReader; //importing reader to read text file
 import java.io.FileReader; //importing the file reader
 import java.io.IOException; //importing an exception
 import java.util.ArrayList; //importing the properties to use an arrayList
-import java.util.HashMap; //importing HashMap to make the code run faster and smoother
 import java.util.List; //importing the properties to use a List
-import java.util.Map; //importing map to make the code run faster and smoother 
 
 //int age = User.getAge();
 
@@ -19,6 +17,14 @@ import java.util.Map; //importing map to make the code run faster and smoother
  */
 public class DietPlans extends javax.swing.JFrame {
         List<User> userInfoList = new ArrayList<>();
+        private UserProfile userProfile = UserProfile.getInstance(); // Create an instance of UserProfile to store user data
+        
+    // Constants for activity multipliers
+    private static final double SEDENTARY_MULTIPLIER = 1.2;
+    private static final double LIGHTLY_ACTIVE_MULTIPLIER = 1.375;
+    private static final double MODERATELY_ACTIVE_MULTIPLIER = 1.55;
+    private static final double VERY_ACTIVE_MULTIPLIER = 1.725;
+    private static final double EXTRA_ACTIVE_MULTIPLIER = 1.9;
     /**
      * Creates new form DietPlans
      */
@@ -63,6 +69,8 @@ public class DietPlans extends javax.swing.JFrame {
         btnGain = new javax.swing.JRadioButton();
         btnLose = new javax.swing.JRadioButton();
         btnMaintain = new javax.swing.JRadioButton();
+        lblPassword = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
 
         butBack.setText("Back");
         butBack.addActionListener(new java.awt.event.ActionListener() {
@@ -200,6 +208,14 @@ public class DietPlans extends javax.swing.JFrame {
             }
         });
 
+        lblPassword.setText("Enter Password So We Can Access Your Personal Details To Calculate Your Macros: ");
+
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -226,7 +242,7 @@ public class DietPlans extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                 .addComponent(jLabel3)
-                                                .addGap(0, 123, Short.MAX_VALUE))
+                                                .addGap(0, 0, Short.MAX_VALUE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -243,37 +259,40 @@ public class DietPlans extends javax.swing.JFrame {
                         .addComponent(jLabel7)))
                 .addGap(54, 54, 54))
             .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLightActive)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnSedentary)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnModActive)
+                                .addComponent(btnVeryActive)
+                                .addComponent(btnFindDiets)
+                                .addComponent(btnExtraActive))
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(btnGain)
+                .addGap(304, 304, 304)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnCalories)
+                            .addContainerGap(556, Short.MAX_VALUE)))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnLightActive)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnSedentary)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnModActive)
-                                        .addComponent(btnVeryActive)
-                                        .addComponent(btnFindDiets)
-                                        .addComponent(btnExtraActive))
-                                    .addGap(377, 377, 377)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnGain)
-                        .addGap(304, 304, 304)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(194, 194, 194))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnCalories)
-                                    .addGap(85, 85, 85))))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(lblPassword)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6))
+                .addGap(453, 453, 453))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,27 +305,31 @@ public class DietPlans extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(butBack1))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSedentary)
-                        .addGap(8, 8, 8)
-                        .addComponent(btnLightActive)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnModActive)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnVeryActive)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnExtraActive)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnFindDiets)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSedentary)
+                .addGap(8, 8, 8)
+                .addComponent(btnLightActive)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnModActive)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnVeryActive)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnExtraActive)
+                .addGap(18, 18, 18)
+                .addComponent(btnFindDiets)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPassword)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -321,8 +344,7 @@ public class DietPlans extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnProtein)
                         .addGap(78, 78, 78))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnGain)
                         .addGap(18, 18, 18)
                         .addComponent(btnLose)
@@ -393,50 +415,88 @@ public class DietPlans extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMaintainActionPerformed
 
-    private double calculateProteinIntake(User user) {
-    double bmr;
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
+    
+    // Method to validate the entered password and retrieve user data
+    private boolean validatePassword(String enteredPassword) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("userInfo.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] userData = line.split(",");
+                if (userData.length == 8) {
+                    String storedUsername = userData[0];
+                    String storedPassword = userData[1];
+                    String storedSex = userData[2];
+                    double storedHeight = Double.parseDouble(userData[3]);
+                    float storedWeightPounds = Float.parseFloat(userData[4]);
+                    int storedAge = Integer.parseInt(userData[5]);
+                    String storedName = userData[6];
+                    String storedActivityLevelChoice = userData[7];
 
-    if (user.getSex().equalsIgnoreCase("male")) {
-        bmr = 10 * user.getWeight() + 6.25 * user.getHeight() - 5 * user.getAge() + 5;
-    } else {
-        bmr = 10 * user.getWeight() + 6.25 * user.getHeight() - 5 * user.getAge() - 161;
+                    if (enteredPassword.equals(storedPassword)) {
+                        // Password is correct, store the user data for calculations
+                        txtSex.setText(storedSex);
+                        txtHeightFeet.setText(String.valueOf(storedHeight)); // Assuming you have a field for feet
+                        txtHeightInches.setText("0"); // Set inches to 0 for simplicity, adjust as needed
+                        txtWeightPounds.setText(String.valueOf(storedWeightPounds));
+                        txtAge.setText(String.valueOf(storedAge));
+                        activityLevelChoice = storedActivityLevelChoice; // Store activity level for calculations
+                        return true;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading user data from file.");
+        }
+        return false; // Password is incorrect or user not found
+    }
+    
+    // Method to calculate daily calories
+    private double calculateDailyCalories(String activityLevel) {
+        double bmr = calculateBMR();
+        double activityMultiplier = getActivityMultiplier(activityLevel);
+
+        return bmr * activityMultiplier;
     }
 
-    double activityMultiplier;
+    // Method to calculate BMR
+    private double calculateBMR() {
+        double weightKg = convertPoundsToKilograms(txtWeightPounds.getText());
+        double heightCm = convertFeetAndInchesToCentimeters(txtHeightFeet.getText(), txtHeightInches.getText());
+        int age = Integer.parseInt(txtAge.getText());
 
-    switch (user.getActivityLevel()) {
-        case "sedentary":
-            activityMultiplier = 1.2;
-            break;
-        case "lightly active":
-            activityMultiplier = 1.375;
-            break;
-        case "moderately active":
-            activityMultiplier = 1.55;
-            break;
-        case "very active":
-            activityMultiplier = 1.725;
-            break;
-        case "extra active":
-            activityMultiplier = 1.9;
-            break;
-        default:
-            activityMultiplier = 1.0;
-            break;
+        if (txtSex.getText().equalsIgnoreCase("male")) {
+            return 10 * weightKg + 6.25 * heightCm - 5 * age + 5;
+        } else {
+            return 10 * weightKg + 6.25 * heightCm - 5 * age - 161;
+        }
     }
 
-    double adjustedCalories = bmr * activityMultiplier;
-
-    if (user.getGoal().equalsIgnoreCase("weight loss")) {
-        adjustedCalories *= 0.9; // Reduce by 10%
-    } else if (user.getGoal().equalsIgnoreCase("weight gain")) {
-        adjustedCalories += 500;
+    // Method to get the activity multiplier based on the selected activity level
+    private double getActivityMultiplier(String activityLevel) {
+        switch (activityLevel.toLowerCase()) {
+            case "sedentary":
+                return SEDENTARY_MULTIPLIER;
+            case "lightly active":
+                return LIGHTLY_ACTIVE_MULTIPLIER;
+            case "moderately active":
+                return MODERATELY_ACTIVE_MULTIPLIER;
+            case "very active":
+                return VERY_ACTIVE_MULTIPLIER;
+            case "extra active":
+                return EXTRA_ACTIVE_MULTIPLIER;
+            default:
+                return 1.0; // Default to sedentary if activity level is not recognized
+        }
     }
-
-    double proteinIntake = (adjustedCalories * 0.4) / 4; // Convert calories to grams
-
-    return proteinIntake;
-}
+    
+    // Method to calculate daily protein intake
+    private double calculateDailyProteinIntake(double dailyCalories, int proteinPercentage) {
+        return (proteinPercentage / 100.0) * (dailyCalories / 4); // Each gram of protein is worth 4 calories
+    }
+   
     
     /**
      * @param args the command line arguments
@@ -498,9 +558,11 @@ public class DietPlans extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel lblPassword;
     private javax.swing.JTextField txtMaintenanceCalories;
     private javax.swing.JTextArea txtOutput;
     private javax.swing.JTextArea txtOutputs;
+    private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtProteinIntake;
     // End of variables declaration//GEN-END:variables
 }
