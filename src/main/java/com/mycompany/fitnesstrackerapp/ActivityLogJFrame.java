@@ -618,7 +618,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
     }
     
      private String createLog(){
-        return "Exercise Name:" + name + ", Calories Burned:" + cals + ", Category: " + category + ", Needs a Gym: " + needsGym + ", Date:" + date;
+        return name + "," + cals + "," + category + "," + needsGym + "," + date;
     }
     
     private void storeOldLogs(List<String> logs, String filepath){
