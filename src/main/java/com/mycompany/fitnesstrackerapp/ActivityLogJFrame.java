@@ -5,12 +5,17 @@
 package com.mycompany.fitnesstrackerapp;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -299,6 +304,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
     
     private void btnCaloriesBurntAscendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaloriesBurntAscendingActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnCaloriesBurntAscendingActionPerformed
 
     private void btnChronoAscendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChronoAscendingActionPerformed
@@ -315,9 +321,10 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
 
     private void btnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortActionPerformed
         // TODO add your handling code here:
+        txtBig.setText("");
         
         if (!BtnChronoDescending.isSelected() && !btnCaloriesBurntAscending.isSelected() && !btnCaloriesBurntDescending.isSelected()
-                && !btnCategoryCardio.isSelected() && !btnCategoryStrength.isSelected() && !btnChronoAscending.isSelected()) {
+            && !btnCategoryCardio.isSelected() && !btnCategoryStrength.isSelected() && !btnChronoAscending.isSelected()) {
             txtSmall.setText("Please choose a sorting order.");
         }
         else if (btnCaloriesBurntAscending.isSelected()) {
@@ -328,6 +335,15 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
             List<String> sortedExercises = sortExercisesByCaloriesDescending();
             displaySortedExercises(sortedExercises);
         }
+        
+        else if(btnChronoAscending.isSelected()){
+            sortLogsChronoAscending();
+        } 
+        
+        else if(BtnChronoDescending.isSelected()){
+            sortLogsChronoDescending();
+        }
+        
         else if (btnCategoryCardio.isSelected()) {
             List<String> sortedExercises = sortExercisesByCardio();
             displaySortedExercises(sortedExercises);
@@ -384,8 +400,8 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
             }
             
             else{
-                storeOldLogs(logs, "src\\main\\java\\com\\mycompany\\fitnesstrackerapp\\ActivityLog.txt");
-                addLog(logs, "src\\main\\java\\com\\mycompany\\fitnesstrackerapp\\ActivityLog.txt");
+                storeOldLogs(logs, "ActivityLog.txt");
+                addLog(logs, "ActivityLog.txt");
             }
         }  
         catch (NumberFormatException nfe) {
@@ -541,7 +557,58 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
 
         return validExercises;
     }
+    
+    private void sortLogsChronoAscending(){
+        List<String> activityLogLines = new ArrayList<>();
 
+        // Read the activity log file and populate the activityLogLines list
+        try (BufferedReader reader = new BufferedReader(new FileReader("ActivityLog.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                activityLogLines.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Sort the activity log lines based on dates in ascending order
+        Collections.sort(activityLogLines, Comparator.comparing(ActivityLogJFrame::extractDate));
+
+        // Print the sorted activity log lines
+        for (String line : activityLogLines) {
+            txtBig.append(line + "\n");
+        }
+    }
+    
+     private void sortLogsChronoDescending(){
+        List<String> activityLogLines = new ArrayList<>();
+
+        // Read the activity log file and populate the activityLogLines list
+        try (BufferedReader reader = new BufferedReader(new FileReader("ActivityLog.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                activityLogLines.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Sort the activity log lines based on dates in ascending order
+        Collections.sort(activityLogLines, Comparator.comparing(ActivityLogJFrame::extractDate).reversed());
+
+        // Print the sorted activity log lines
+        for (String line : activityLogLines) {
+            txtBig.append(line + "\n");
+        }
+    }
+
+
+    private static LocalDate extractDate(String line) {
+        // Extract and parse the date from the line
+        String dateString = line.split("Date:")[1].trim();
+        return LocalDate.parse(dateString, DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+    }
+    
     // Method to display sorted exercises in the JTextArea
     private void displaySortedExercises(List<String> sortedExercises) {
         txtBig.setText(""); // Clear the JTextArea
@@ -573,16 +640,15 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
     }
     
     private void addLog(List<String> logs, String filepath){
-        FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(filepath);
-            BufferedReader r = new BufferedReader(new FileReader(filepath));
+            FileWriter fileWriter = new FileWriter(filepath);
+            BufferedReader reader = new BufferedReader(new FileReader(filepath));
             
             String activityLog = createLog();
             System.out.println(activityLog);
             logs.add(activityLog);
             for (int i = 0; i < logs.size(); i++) {
-                if (!r.ready()) {
+                if (!reader.ready()) {
                     fileWriter.write(logs.get(i) + "\n");
                 } else {
                     fileWriter.write("\r");
