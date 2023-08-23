@@ -636,7 +636,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
                 logs.add(store);
             }
         } catch (IOException ex) {
-            Logger.getLogger(ActivityLog.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ActivityLogJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         for (String log : logs) {
@@ -664,7 +664,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
             fileWriter.close();
             
         } catch (IOException ex) {
-            Logger.getLogger(ActivityLog.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ActivityLogJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
