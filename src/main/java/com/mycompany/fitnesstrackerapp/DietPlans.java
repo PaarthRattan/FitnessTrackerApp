@@ -3,6 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.fitnesstrackerapp;
+import java.io.BufferedReader; //importing reader to read text file
+import java.io.FileReader; //importing the file reader
+import java.io.IOException; //importing an exception
+import java.util.ArrayList; //importing the properties to use an arrayList
+import java.util.HashMap; //importing HashMap to make the code run faster and smoother
+import java.util.List; //importing the properties to use a List
+import java.util.Map; //importing map to make the code run faster and smoother 
 
 //int age = User.getAge();
 
@@ -11,7 +18,7 @@ package com.mycompany.fitnesstrackerapp;
  * @author sande
  */
 public class DietPlans extends javax.swing.JFrame {
-    
+        List<User> userInfoList = new ArrayList<>();
     /**
      * Creates new form DietPlans
      */
@@ -41,9 +48,12 @@ public class DietPlans extends javax.swing.JFrame {
         txtMaintenanceCalories = new javax.swing.JTextField();
         txtProteinIntake = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
-        txtOutputs1 = new javax.swing.JTextArea();
+        txtUpdate = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
-        txtOutputs2 = new javax.swing.JTextArea();
+        txtOutput = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
         butBack.setText("Back");
         butBack.addActionListener(new java.awt.event.ActionListener() {
@@ -89,25 +99,47 @@ public class DietPlans extends javax.swing.JFrame {
 
         txtProteinIntake.setEditable(false);
 
-        txtOutputs1.setEditable(false);
-        txtOutputs1.setColumns(20);
-        txtOutputs1.setRows(5);
-        jScrollPane4.setViewportView(txtOutputs1);
+        txtUpdate.setEditable(false);
+        txtUpdate.setColumns(20);
+        txtUpdate.setRows(5);
+        jScrollPane4.setViewportView(txtUpdate);
 
-        txtOutputs2.setEditable(false);
-        txtOutputs2.setColumns(20);
-        txtOutputs2.setRows(5);
-        jScrollPane5.setViewportView(txtOutputs2);
+        txtOutput.setEditable(false);
+        txtOutput.setColumns(20);
+        txtOutput.setRows(5);
+        jScrollPane5.setViewportView(txtOutput);
+
+        jLabel6.setText("Now enter Sedentary, Lightly Active or Moderately Active and press Calculate to receive your results!");
+
+        jButton1.setText("Calculate");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(269, 269, 269)
+                .addComponent(butBack1)
+                .addGap(181, 181, 181))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel6)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -122,19 +154,19 @@ public class DietPlans extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(186, 186, 186)
-                                .addComponent(txtBMI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtBMI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jLabel2)))
                 .addContainerGap(240, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(269, 269, 269)
-                        .addComponent(butBack1)
-                        .addGap(181, 181, 181))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(587, Short.MAX_VALUE)
@@ -164,9 +196,20 @@ public class DietPlans extends javax.swing.JFrame {
                         .addComponent(txtMaintenanceCalories, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtProteinIntake, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jButton1)
+                        .addGap(90, 90, 90))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(152, 152, 152)
@@ -178,10 +221,7 @@ public class DietPlans extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void butBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBackActionPerformed
-        // Navigate back to the HomeScreen
-        OptionsScreen optionsScreen = new OptionsScreen();
-        optionsScreen.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_butBackActionPerformed
 
     private void butBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBack1ActionPerformed
@@ -195,6 +235,59 @@ public class DietPlans extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBMIActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private double calculateProteinIntake(User user) {
+    double bmr;
+
+    if (user.getSex().equalsIgnoreCase("male")) {
+        bmr = 10 * user.getWeight() + 6.25 * user.getHeight() - 5 * user.getAge() + 5;
+    } else {
+        bmr = 10 * user.getWeight() + 6.25 * user.getHeight() - 5 * user.getAge() - 161;
+    }
+
+    double activityMultiplier;
+
+    switch (user.getActivityLevel()) {
+        case "sedentary":
+            activityMultiplier = 1.2;
+            break;
+        case "lightly active":
+            activityMultiplier = 1.375;
+            break;
+        case "moderately active":
+            activityMultiplier = 1.55;
+            break;
+        case "very active":
+            activityMultiplier = 1.725;
+            break;
+        case "extra active":
+            activityMultiplier = 1.9;
+            break;
+        default:
+            activityMultiplier = 1.0;
+            break;
+    }
+
+    double adjustedCalories = bmr * activityMultiplier;
+
+    if (user.getGoal().equalsIgnoreCase("weight loss")) {
+        adjustedCalories *= 0.9; // Reduce by 10%
+    } else if (user.getGoal().equalsIgnoreCase("weight gain")) {
+        adjustedCalories += 500;
+    }
+
+    double proteinIntake = (adjustedCalories * 0.4) / 4; // Convert calories to grams
+
+    return proteinIntake;
+}
+    
     /**
      * @param args the command line arguments
      */
@@ -233,19 +326,22 @@ public class DietPlans extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butBack;
     private javax.swing.JButton butBack1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtBMI;
     private javax.swing.JTextField txtMaintenanceCalories;
+    private javax.swing.JTextArea txtOutput;
     private javax.swing.JTextArea txtOutputs;
-    private javax.swing.JTextArea txtOutputs1;
-    private javax.swing.JTextArea txtOutputs2;
     private javax.swing.JTextField txtProteinIntake;
+    private javax.swing.JTextArea txtUpdate;
     // End of variables declaration//GEN-END:variables
 }
