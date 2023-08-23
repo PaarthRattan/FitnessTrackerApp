@@ -2,6 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
+/**
+ * This class represents the login screen of the fitness tracker application. Users
+ * can enter their username and password to log in. Upon successful login, they are
+ * redirected to the home screen.
+ */
 package com.mycompany.fitnesstrackerapp;
 
 import java.awt.event.ActionEvent;
@@ -126,6 +132,7 @@ public class LoginScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Pressing this button confirms the creation of the users account in the system
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         // TODO add your handling code here:
         
@@ -181,6 +188,7 @@ public class LoginScreen extends javax.swing.JFrame {
         worker.execute(); // Start the SwingWorker
     }//GEN-LAST:event_btnConfirmActionPerformed
 
+    // Pressing this button brings the user back to the HomeScreen
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         
