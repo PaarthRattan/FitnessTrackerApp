@@ -29,4 +29,38 @@ public class Exercise {
         this.focus = focus;
         this.gymRequired = gymRequired; 
     }
+
+    // Getter methods
+    public String getName() {
+        return name;
+    }
+
+    public int getCaloriesBurned() {
+        return caloriesBurned;
+    }
+
+    public String getFocus() {
+        return focus;
+    }
+
+    public String getGymRequired() {
+        return gymRequired;
+    }
+
+    // Setter methods
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCaloriesBurned(int caloriesBurned) {
+        this.caloriesBurned = caloriesBurned;
+    }
+
+    public void setFocus(String focus) {
+        this.focus = focus;
+    }
+
+    public void setGymRequired(String gymRequired) {
+        this.gymRequired = gymRequired;
+    }
 }
