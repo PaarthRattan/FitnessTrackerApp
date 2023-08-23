@@ -1,3 +1,5 @@
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -408,119 +410,119 @@ public class DietPlans extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
     
-    // Method to validate the entered password and retrieve user data
-    private boolean validatePassword(String enteredPassword) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("userInfo.txt"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] userData = line.split(",");
-                if (userData.length == 8) {
-                    String storedUsername = userData[0];
-                    String storedPassword = userData[1];
-                    String storedSex = userData[2];
-                    double storedHeight = Double.parseDouble(userData[3]);
-                    float storedWeightPounds = Float.parseFloat(userData[4]);
-                    int storedAge = Integer.parseInt(userData[5]);
-                    String storedName = userData[6];
-                    String storedActivityLevelChoice = userData[7];
-
-                    if (enteredPassword.equals(storedPassword)) {
-                        // Password is correct, store the user data for calculations
-                        txtSex.setText(storedSex);
-                        txtHeightFeet.setText(String.valueOf(storedHeight)); // Assuming you have a field for feet
-                        txtHeightInches.setText("0"); // Set inches to 0 for simplicity, adjust as needed
-                        txtWeightPounds.setText(String.valueOf(storedWeightPounds));
-                        txtAge.setText(String.valueOf(storedAge));
-                        activityLevelChoice = storedActivityLevelChoice; // Store activity level for calculations
-                        return true;
-                    }
-                }
-            }
-        } catch (IOException e) {
-            System.err.println("Error reading user data from file.");
-        }
-        return false; // Password is incorrect or user not found
-    }
-    
-    // Method to calculate daily calories
-    private double calculateDailyCalories(String activityLevel) {
-        double bmr = calculateBMR();
-        double activityMultiplier = getActivityMultiplier(activityLevel);
-
-        return bmr * activityMultiplier;
-    }
-
-    // Method to calculate BMR
-    private double calculateBMR() {
-        double weightKg = convertPoundsToKilograms(txtWeightPounds.getText());
-        double heightCm = convertFeetAndInchesToCentimeters(txtHeightFeet.getText(), txtHeightInches.getText());
-        int age = Integer.parseInt(txtAge.getText());
-
-        if (txtSex.getText().equalsIgnoreCase("male")) {
-            return 10 * weightKg + 6.25 * heightCm - 5 * age + 5;
-        } else {
-            return 10 * weightKg + 6.25 * heightCm - 5 * age - 161;
-        }
-    }
-
-    // Method to get the activity multiplier based on the selected activity level
-    private double getActivityMultiplier(String activityLevel) {
-        switch (activityLevel.toLowerCase()) {
-            case "sedentary":
-                return SEDENTARY_MULTIPLIER;
-            case "lightly active":
-                return LIGHTLY_ACTIVE_MULTIPLIER;
-            case "moderately active":
-                return MODERATELY_ACTIVE_MULTIPLIER;
-            case "very active":
-                return VERY_ACTIVE_MULTIPLIER;
-            case "extra active":
-                return EXTRA_ACTIVE_MULTIPLIER;
-            default:
-                return 1.0; // Default to sedentary if activity level is not recognized
-        }
-    }
-    
-    // Method to calculate daily protein intake
-    private double calculateDailyProteinIntake(double dailyCalories, int proteinPercentage) {
-        return (proteinPercentage / 100.0) * (dailyCalories / 4); // Each gram of protein is worth 4 calories
-    }
-   
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DietPlans.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DietPlans.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DietPlans.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DietPlans.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DietPlans().setVisible(true);
-            }
-        });
-    }
+//    // Method to validate the entered password and retrieve user data
+//    private boolean validatePassword(String enteredPassword) {
+//        try (BufferedReader reader = new BufferedReader(new FileReader("userInfo.txt"))) {
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                String[] userData = line.split(",");
+//                if (userData.length == 8) {
+//                    String storedUsername = userData[0];
+//                    String storedPassword = userData[1];
+//                    String storedSex = userData[2];
+//                    double storedHeight = Double.parseDouble(userData[3]);
+//                    float storedWeightPounds = Float.parseFloat(userData[4]);
+//                    int storedAge = Integer.parseInt(userData[5]);
+//                    String storedName = userData[6];
+//                    String storedActivityLevelChoice = userData[7];
+//
+//                    if (enteredPassword.equals(storedPassword)) {
+//                        // Password is correct, store the user data for calculations
+//                        txtSex.setText(storedSex);
+//                        txtHeightFeet.setText(String.valueOf(storedHeight)); // Assuming you have a field for feet
+//                        txtHeightInches.setText("0"); // Set inches to 0 for simplicity, adjust as needed
+//                        txtWeightPounds.setText(String.valueOf(storedWeightPounds));
+//                        txtAge.setText(String.valueOf(storedAge));
+//                        activityLevelChoice = storedActivityLevelChoice; // Store activity level for calculations
+//                        return true;
+//                    }
+//                }
+//            }
+//        } catch (IOException e) {
+//            System.err.println("Error reading user data from file.");
+//        }
+//        return false; // Password is incorrect or user not found
+//    }
+//    
+//    // Method to calculate daily calories
+//    private double calculateDailyCalories(String activityLevel) {
+//        double bmr = calculateBMR();
+//        double activityMultiplier = getActivityMultiplier(activityLevel);
+//
+//        return bmr * activityMultiplier;
+//    }
+//
+//    // Method to calculate BMR
+//    private double calculateBMR() {
+//        double weightKg = convertPoundsToKilograms(txtWeightPounds.getText());
+//        double heightCm = convertFeetAndInchesToCentimeters(txtHeightFeet.getText(), txtHeightInches.getText());
+//        int age = Integer.parseInt(txtAge.getText());
+//
+//        if (txtSex.getText().equalsIgnoreCase("male")) {
+//            return 10 * weightKg + 6.25 * heightCm - 5 * age + 5;
+//        } else {
+//            return 10 * weightKg + 6.25 * heightCm - 5 * age - 161;
+//        }
+//    }
+//
+//    // Method to get the activity multiplier based on the selected activity level
+//    private double getActivityMultiplier(String activityLevel) {
+//        switch (activityLevel.toLowerCase()) {
+//            case "sedentary":
+//                return SEDENTARY_MULTIPLIER;
+//            case "lightly active":
+//                return LIGHTLY_ACTIVE_MULTIPLIER;
+//            case "moderately active":
+//                return MODERATELY_ACTIVE_MULTIPLIER;
+//            case "very active":
+//                return VERY_ACTIVE_MULTIPLIER;
+//            case "extra active":
+//                return EXTRA_ACTIVE_MULTIPLIER;
+//            default:
+//                return 1.0; // Default to sedentary if activity level is not recognized
+//        }
+//    }
+//    
+//    // Method to calculate daily protein intake
+//    private double calculateDailyProteinIntake(double dailyCalories, int proteinPercentage) {
+//        return (proteinPercentage / 100.0) * (dailyCalories / 4); // Each gram of protein is worth 4 calories
+//    }
+//   
+//    
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(DietPlans.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(DietPlans.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(DietPlans.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(DietPlans.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new DietPlans().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup ButtonGroupActivity;
@@ -555,3 +557,4 @@ public class DietPlans extends javax.swing.JFrame {
     private javax.swing.JTextField txtProteinIntake;
     // End of variables declaration//GEN-END:variables
 }
+

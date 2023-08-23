@@ -403,6 +403,12 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
             else{
                 storeOldLogs(logs, "ActivityLog.txt");
                 addLog(logs, "ActivityLog.txt");
+                txtSmall.setText("Added Successfully.");
+                txtCalsBurned.setText("");
+                txtCategory.setText("");
+                txtDate.setText("");
+                txtName.setText("");
+                txtNeedsGym.setText("");
             }
         }  
         catch (NumberFormatException nfe) {
@@ -654,7 +660,7 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
             System.out.println(activityLog);
             logs.add(activityLog);
             for (int i = 0; i < logs.size(); i++) {
-                if (!reader.ready()) {
+                if (!reader.ready()) {  
                     fileWriter.write(logs.get(i) + "\n");
                 } else {
                     fileWriter.write("\r");
