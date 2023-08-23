@@ -486,68 +486,68 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
     
     
     private void sortActivityLogByCardio() {
-        List<String> activityLogLines = new ArrayList<>();
+    List<String> activityLogLines = new ArrayList<>();
 
-        // Read the activity log file and populate the activityLogLines list
-        try (BufferedReader reader = new BufferedReader(new FileReader("ActivityLog.txt"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                activityLogLines.add(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    // Read the activity log file and populate the activityLogLines list
+    try (BufferedReader reader = new BufferedReader(new FileReader("ActivityLog.txt"))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            activityLogLines.add(line);
         }
-
-        // Filter out invalid log entries
-        List<String> validLogs = activityLogLines.stream()
-                .filter(log -> {
-                    String[] exerciseParts = log.split(",");
-                    return exerciseParts.length >= 2 && exerciseParts[2].equalsIgnoreCase("Cardio");
-                })
-                .collect(Collectors.toList());
-
-        // Sort the valid logs by calories in descending order
-        validLogs.sort((log1, log2) -> {
-            int calories1 = Integer.parseInt(log1.split(",")[1]);
-            int calories2 = Integer.parseInt(log2.split(",")[1]);
-            return Integer.compare(calories2, calories1);
-        });
-
-        // Get the current user's logs and print them
-        getActivityLogsForCurrentUser(validLogs);
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+
+    // Filter out invalid log entries, keeping only Cardio exercises
+    List<String> validLogs = activityLogLines.stream()
+        .filter(log -> {
+            String[] exerciseParts = log.split(",");
+            return exerciseParts.length >= 3 && exerciseParts[2].equalsIgnoreCase("Cardio");
+        })
+        .collect(Collectors.toList());
+
+    // Sort the valid logs by exercise name
+    validLogs.sort((log1, log2) -> {
+        String exerciseName1 = log1.split(",")[0];
+        String exerciseName2 = log2.split(",")[0];
+        return exerciseName1.compareToIgnoreCase(exerciseName2);
+    });
+
+    // Get the current user's logs and print them
+    getActivityLogsForCurrentUser(validLogs);
+}
 
     private void sortActivityLogByStrength() {
-        List<String> activityLogLines = new ArrayList<>();
+    List<String> activityLogLines = new ArrayList<>();
 
-        // Read the activity log file and populate the activityLogLines list
-        try (BufferedReader reader = new BufferedReader(new FileReader("ActivityLog.txt"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                activityLogLines.add(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    // Read the activity log file and populate the activityLogLines list
+    try (BufferedReader reader = new BufferedReader(new FileReader("ActivityLog.txt"))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            activityLogLines.add(line);
         }
-
-        // Filter out invalid log entries
-        List<String> validLogs = activityLogLines.stream()
-                .filter(log -> {
-                    String[] exerciseParts = log.split(",");
-                    return exerciseParts.length >= 2 && exerciseParts[2].equalsIgnoreCase("Strength");
-                })
-                .collect(Collectors.toList());
-
-        // Sort the valid logs by calories in descending order
-        validLogs.sort((log1, log2) -> {
-            int calories1 = Integer.parseInt(log1.split(",")[1]);
-            int calories2 = Integer.parseInt(log2.split(",")[1]);
-            return Integer.compare(calories2, calories1);
-        });
-
-        // Get the current user's logs and print them
-        getActivityLogsForCurrentUser(validLogs);
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+
+    // Filter out invalid log entries, keeping only Strength exercises
+    List<String> validLogs = activityLogLines.stream()
+        .filter(log -> {
+            String[] exerciseParts = log.split(",");
+            return exerciseParts.length >= 3 && exerciseParts[2].equalsIgnoreCase("Strength");
+        })
+        .collect(Collectors.toList());
+
+    // Sort the valid logs by exercise name
+    validLogs.sort((log1, log2) -> {
+        String exerciseName1 = log1.split(",")[0];
+        String exerciseName2 = log2.split(",")[0];
+        return exerciseName1.compareToIgnoreCase(exerciseName2);
+    });
+
+    // Get the current user's logs and print them
+    getActivityLogsForCurrentUser(validLogs);
+}
 
     // Method to sort exercises by calories burnt in ascending order
     private void sortActivityLogByCaloriesAscending() {
@@ -661,7 +661,6 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
         try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
             if (reader.ready()) {
                 username = reader.readLine();
-                System.out.println(username);
                 reader.close();
             }
         } catch (IOException ex) {
@@ -698,7 +697,6 @@ public class ActivityLogJFrame extends javax.swing.JFrame {
             while ((line = reader.readLine()) != null) {
                 String[] logParts = line.split(",");
                 if (logParts[5].equals(username)) {
-                    System.out.println(username + "!");
                     logs.add(line);
                 }
             }
