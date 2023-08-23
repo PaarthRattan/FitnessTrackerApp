@@ -122,6 +122,10 @@ public class OptionsScreen extends javax.swing.JFrame {
     // Pressing this button brings the user to the DietPlans screen
     private void btnDietPlanningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDietPlanningActionPerformed
         // TODO add your handling code here:
+        
+        DietPlans dietPlan = new DietPlans();
+        dietPlan.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnDietPlanningActionPerformed
     
     // Pressing this button brings the user to the ActivityLog screen
