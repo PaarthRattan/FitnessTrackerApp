@@ -41,4 +41,3 @@ Push Press, 250, Strength, Yes
 Leg Raises, 200, Strength, No
 Russian Twists, 200, Strength, No
 Farmer's Walk, 300, Strength, Yes
-**
