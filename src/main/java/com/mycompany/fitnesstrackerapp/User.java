@@ -1,8 +1,3 @@
-/*
- * User class represents user data for the fitness tracker app.
- * It includes information such as username, password, sex, height,
- * weight, activity level, age, and name.
- */
 package com.mycompany.fitnesstrackerapp;
 
 /**

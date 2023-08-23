@@ -132,6 +132,11 @@ public class OptionsScreen extends javax.swing.JFrame {
     // Pressing this button brings the user to the ExcerciseProgram screen
     private void btnExerciseProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExerciseProgramActionPerformed
         // TODO add your handling code here:
+        
+        // Navigate to the ExerciseProgramGUI to see further features
+        ExerciseProgramGUI exerciseProgram = new ExerciseProgramGUI();
+        exerciseProgram.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnExerciseProgramActionPerformed
 
     /**

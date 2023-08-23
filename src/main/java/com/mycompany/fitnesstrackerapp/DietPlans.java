@@ -38,22 +38,31 @@ public class DietPlans extends javax.swing.JFrame {
         butBack = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtOutputs = new javax.swing.JTextArea();
+        ButtonGroupActivity = new javax.swing.ButtonGroup();
+        ButtonGroupMacro = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         butBack1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtBMI = new javax.swing.JTextField();
         txtMaintenanceCalories = new javax.swing.JTextField();
         txtProteinIntake = new javax.swing.JTextField();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        txtUpdate = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
         txtOutput = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        btnFindDiets = new javax.swing.JButton();
+        btnSedentary = new javax.swing.JRadioButton();
+        btnLightActive = new javax.swing.JRadioButton();
+        btnModActive = new javax.swing.JRadioButton();
+        btnVeryActive = new javax.swing.JRadioButton();
+        btnExtraActive = new javax.swing.JRadioButton();
+        btnCalories = new javax.swing.JButton();
+        btnProtein = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        btnGain = new javax.swing.JRadioButton();
+        btnLose = new javax.swing.JRadioButton();
+        btnMaintain = new javax.swing.JRadioButton();
 
         butBack.setText("Back");
         butBack.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +82,7 @@ public class DietPlans extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setText("Diet Plan");
 
-        jLabel2.setText("Here the user is given names of diets to choose from along with foods that correspond with the diet depending on their BMI and Portein Requirement");
+        jLabel2.setText("Here you are given names of diets to choose from along with foods that correspond with the diet depending on your BMI and protein requirements.");
 
         butBack1.setText("Back");
         butBack1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,45 +91,112 @@ public class DietPlans extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("BMI:");
-
-        jLabel4.setText("Maintenance Calories:");
+        jLabel4.setText("Daily Calories:");
 
         jLabel5.setText("Protein Intake (g) :");
 
-        txtBMI.setEditable(false);
-        txtBMI.addActionListener(new java.awt.event.ActionListener() {
+        txtMaintenanceCalories.setEditable(false);
+        txtMaintenanceCalories.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBMIActionPerformed(evt);
+                txtMaintenanceCaloriesActionPerformed(evt);
             }
         });
 
-        txtMaintenanceCalories.setEditable(false);
-
         txtProteinIntake.setEditable(false);
-
-        txtUpdate.setEditable(false);
-        txtUpdate.setColumns(20);
-        txtUpdate.setRows(5);
-        jScrollPane4.setViewportView(txtUpdate);
 
         txtOutput.setEditable(false);
         txtOutput.setColumns(20);
         txtOutput.setRows(5);
         jScrollPane5.setViewportView(txtOutput);
 
-        jLabel6.setText("Now enter Sedentary, Lightly Active or Moderately Active and press Calculate to receive your results!");
+        jLabel6.setText("Choose your activity level and find diets, calculate your protein needs, and calculate your calorie needs.");
 
-        jButton1.setText("Calculate");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnFindDiets.setText("Find Diets");
+        btnFindDiets.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnFindDietsActionPerformed(evt);
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonGroupActivity.add(btnSedentary);
+        btnSedentary.setText("Sedentary");
+        btnSedentary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                btnSedentaryActionPerformed(evt);
+            }
+        });
+
+        ButtonGroupActivity.add(btnLightActive);
+        btnLightActive.setText("Lightly Active");
+        btnLightActive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLightActiveActionPerformed(evt);
+            }
+        });
+
+        ButtonGroupActivity.add(btnModActive);
+        btnModActive.setText("Moderately Active");
+        btnModActive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModActiveActionPerformed(evt);
+            }
+        });
+
+        ButtonGroupActivity.add(btnVeryActive);
+        btnVeryActive.setText("Very Active");
+        btnVeryActive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVeryActiveActionPerformed(evt);
+            }
+        });
+
+        ButtonGroupActivity.add(btnExtraActive);
+        btnExtraActive.setText("Extra Active");
+        btnExtraActive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExtraActiveActionPerformed(evt);
+            }
+        });
+
+        btnCalories.setText("Calculate Daily Calories");
+        btnCalories.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaloriesActionPerformed(evt);
+            }
+        });
+
+        btnProtein.setText("Calculate Daily Protein Intake");
+        btnProtein.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProteinActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("You may also calculate  your protein requirements and calorie requirements.");
+
+        jLabel7.setText("Choose maintain, loose, or gain weight to calculate your macros:");
+
+        ButtonGroupMacro.add(btnGain);
+        btnGain.setText("Gain");
+        btnGain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGainActionPerformed(evt);
+            }
+        });
+
+        ButtonGroupMacro.add(btnLose);
+        btnLose.setText("Lose");
+        btnLose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoseActionPerformed(evt);
+            }
+        });
+
+        ButtonGroupMacro.add(btnMaintain);
+        btnMaintain.setText("Maintain");
+        btnMaintain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMaintainActionPerformed(evt);
             }
         });
 
@@ -135,86 +211,124 @@ public class DietPlans extends javax.swing.JFrame {
                 .addComponent(butBack1)
                 .addGap(181, 181, 181))
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel6)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnLose)
+                            .addComponent(btnMaintain))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(jLabel3)
+                                                .addGap(0, 123, Short.MAX_VALUE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(txtProteinIntake, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtMaintenanceCalories, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(307, 307, 307)
+                                .addComponent(btnProtein)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7)))
+                .addGap(54, 54, 54))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtProteinIntake, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtMaintenanceCalories, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(186, 186, 186)
-                                .addComponent(txtBMI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel6))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel2)))
-                .addContainerGap(240, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(587, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(106, 106, 106)))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnLightActive)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnSedentary)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnModActive)
+                                        .addComponent(btnVeryActive)
+                                        .addComponent(btnFindDiets)
+                                        .addComponent(btnExtraActive))
+                                    .addGap(377, 377, 377)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnGain)
+                        .addGap(304, 304, 304)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addGap(194, 194, 194))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnCalories)
+                                    .addGap(85, 85, 85))))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(butBack1))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(txtBMI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(79, 79, 79)
-                        .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSedentary)
+                        .addGap(8, 8, 8)
+                        .addComponent(btnLightActive)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnModActive)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnVeryActive)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnExtraActive)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnFindDiets)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtMaintenanceCalories, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCalories)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtProteinIntake, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnProtein)
+                        .addGap(78, 78, 78))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtMaintenanceCalories, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtProteinIntake, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jButton1)
-                        .addGap(90, 90, 90))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(152, 152, 152)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(174, Short.MAX_VALUE)))
+                        .addComponent(btnGain)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnLose)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMaintain)
+                        .addGap(101, 101, 101))))
         );
 
         pack();
@@ -231,17 +345,53 @@ public class DietPlans extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_butBack1ActionPerformed
 
-    private void txtBMIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBMIActionPerformed
+    private void btnFindDietsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindDietsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBMIActionPerformed
+    }//GEN-LAST:event_btnFindDietsActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void txtMaintenanceCaloriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaintenanceCaloriesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_txtMaintenanceCaloriesActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void btnCaloriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaloriesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_btnCaloriesActionPerformed
+
+    private void btnProteinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProteinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProteinActionPerformed
+
+    private void btnSedentaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSedentaryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSedentaryActionPerformed
+
+    private void btnLightActiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLightActiveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLightActiveActionPerformed
+
+    private void btnModActiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActiveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModActiveActionPerformed
+
+    private void btnVeryActiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVeryActiveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVeryActiveActionPerformed
+
+    private void btnExtraActiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExtraActiveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExtraActiveActionPerformed
+
+    private void btnGainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGainActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGainActionPerformed
+
+    private void btnLoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoseActionPerformed
+
+    private void btnMaintainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaintainActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMaintainActionPerformed
 
     private double calculateProteinIntake(User user) {
     double bmr;
@@ -324,24 +474,33 @@ public class DietPlans extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup ButtonGroupActivity;
+    private javax.swing.ButtonGroup ButtonGroupMacro;
+    private javax.swing.JButton btnCalories;
+    private javax.swing.JRadioButton btnExtraActive;
+    private javax.swing.JButton btnFindDiets;
+    private javax.swing.JRadioButton btnGain;
+    private javax.swing.JRadioButton btnLightActive;
+    private javax.swing.JRadioButton btnLose;
+    private javax.swing.JRadioButton btnMaintain;
+    private javax.swing.JRadioButton btnModActive;
+    private javax.swing.JButton btnProtein;
+    private javax.swing.JRadioButton btnSedentary;
+    private javax.swing.JRadioButton btnVeryActive;
     private javax.swing.JButton butBack;
     private javax.swing.JButton butBack1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField txtBMI;
     private javax.swing.JTextField txtMaintenanceCalories;
     private javax.swing.JTextArea txtOutput;
     private javax.swing.JTextArea txtOutputs;
     private javax.swing.JTextField txtProteinIntake;
-    private javax.swing.JTextArea txtUpdate;
     // End of variables declaration//GEN-END:variables
 }

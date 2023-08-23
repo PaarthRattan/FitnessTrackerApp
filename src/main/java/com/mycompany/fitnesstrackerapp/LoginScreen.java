@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 /**
  * This class represents the login screen of the fitness tracker application. Users
  * can enter their username and password to log in. Upon successful login, they are
@@ -164,8 +159,8 @@ public class LoginScreen extends javax.swing.JFrame {
                             @Override
                             public void actionPerformed(ActionEvent e) {
                                 // If the login was successful, navigate back to the HomeScreen
-                                HomeScreen homeScreen = new HomeScreen();
-                                homeScreen.setVisible(true);
+                                OptionsScreen optionsScreen = new OptionsScreen();
+                                optionsScreen.setVisible(true);
                                 dispose();
                             }
                         });
