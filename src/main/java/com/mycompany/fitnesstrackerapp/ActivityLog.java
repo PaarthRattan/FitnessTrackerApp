@@ -20,6 +20,7 @@ public class ActivityLog {
         this.userProfile = userProfile;
     }
     
+    
 
     
 
